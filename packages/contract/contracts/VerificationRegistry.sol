@@ -82,14 +82,6 @@ contract VerificationRegistry is
     event VerificationRevoked(bytes32 uuid);
     event VerificationRemoved(bytes32 uuid);
 
-    modifier onlyVerifier() {
-        require(
-            _verifiers[msg.sender].name != 0,
-            "VerificationRegistry: Caller is not a Verifier Delegate"
-        );
-        _;
-    }
-
     /*****************************/
     /* VERIFIER MANAGEMENT LOGIC */
     /*****************************/
@@ -173,6 +165,14 @@ contract VerificationRegistry is
     /**********************/
     /* VERIFICATION LOGIC */
     /**********************/
+
+    modifier onlyVerifier() {
+        require(
+            _verifiers[msg.sender].name != 0,
+            "VerificationRegistry: Caller is not a Verifier"
+        );
+        _;
+    }
 
     /**
      * Retrieve the current total number of registered VerificationRecords
@@ -358,16 +358,19 @@ contract VerificationRegistry is
             )
         );
 
-        // use OpenZeppelin ECDSA to recover the public address corresponding to the
-        // signature and regenerated hash
+        // recover the public address corresponding to the signature and regenerated hash
         address signerAddress = ECDSA.recover(digest, signature);
 
+        // retrieve a verifier address for the recovered address
         address verifierAddress = _signers[signerAddress];
 
+        // ensure the verifier is registered and its signer is the recovered address
         require(
             _verifiers[verifierAddress].signer == signerAddress,
             "VerificationRegistry: Signed digest cannot be verified"
         );
+
+        // ensure that the result has not expired
         require(
             verificationResult.expiration > block.timestamp,
             "VerificationRegistry: Verification confirmation expired"

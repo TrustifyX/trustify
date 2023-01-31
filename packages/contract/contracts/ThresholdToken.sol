@@ -6,10 +6,10 @@ import "./VerificationRegistry.sol";
 import "hardhat/console.sol";
 
 contract ThresholdToken is ERC20, VerificationRegistry {
-    uint256 private _CREDENTIAL_THRESHOLD = 10;
+    uint256 private _credentialThreshold = 10;
 
     constructor(uint256 initialSupply)
-        ERC20("Example With Verficiation", "VUSDC")
+        ERC20("Threshold Example Coin", "THUSD")
     {
         _mint(msg.sender, initialSupply);
     }
@@ -20,10 +20,20 @@ contract ThresholdToken is ERC20, VerificationRegistry {
         uint256 amount
     ) internal virtual override {
         super._beforeTokenTransfer(from, to, amount);
-        require(
-            amount < _CREDENTIAL_THRESHOLD,
-            "Transfers of this amount require validateAndTransfer"
-        );
+        if (owner() != msg.sender) {
+            bool isSenderVerified = this.isVerified(from);
+            require(
+                isSenderVerified || amount < _credentialThreshold,
+                "ThresholdToken: Transfers of this amount require sender verification"
+            );
+            // for the sake of demonstration, we're removing verifications
+            // and requiring them again for new transfers
+            if (isSenderVerified) {
+                this.removeVerification(
+                    this.getVerificationsForSubject(msg.sender)[0].uuid
+                );
+            }
+        }
     }
 
     /**
@@ -44,7 +54,11 @@ contract ThresholdToken is ERC20, VerificationRegistry {
      * is required. This is an overly-simplified example, in the real world
      * more sophisticated logic would likely trigger verification.
      */
-    function verificationThreshold() external view returns (uint256) {
-        return _CREDENTIAL_THRESHOLD;
+    function getThreshold() external view returns (uint256) {
+        return _credentialThreshold;
+    }
+
+    function setThreshold(uint256 t) external onlyOwner {
+        _credentialThreshold = t;
     }
 }
