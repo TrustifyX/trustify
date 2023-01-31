@@ -50,6 +50,11 @@ contract VerificationRegistry is
     mapping(address => VerifierInfo) private _verifiers;
 
     /**
+     * Verifier signing keys mapped to verifier addresses
+     */
+    mapping(address => address) private _signers;
+
+    /**
      * Total number of active registered verifiers
      */
     uint256 _verifierCount;
@@ -73,10 +78,7 @@ contract VerificationRegistry is
     event VerifierAdded(address verifier, VerifierInfo verifierInfo);
     event VerifierUpdated(address verifier, VerifierInfo verifierInfo);
     event VerifierRemoved(address verifier);
-    event VerificationResultConfirmed(
-        address verifierAddress,
-        VerificationRecord verificationRecord
-    );
+    event VerificationResultConfirmed(VerificationRecord verificationRecord);
     event VerificationRevoked(bytes32 uuid);
     event VerificationRemoved(bytes32 uuid);
 
@@ -104,6 +106,7 @@ contract VerificationRegistry is
             "VerificationRegistry: Verifier Address Exists"
         );
         _verifiers[verifierAddress] = verifierInfo;
+        _signers[verifierInfo.signer] = verifierAddress;
         _verifierCount++;
         emit VerifierAdded(verifierAddress, verifierInfo);
     }
@@ -149,6 +152,7 @@ contract VerificationRegistry is
             "VerificationRegistry: Unknown Verifier Address"
         );
         _verifiers[verifierAddress] = verifierInfo;
+        _signers[verifierInfo.signer] = verifierAddress;
         emit VerifierUpdated(verifierAddress, verifierInfo);
     }
 
@@ -160,6 +164,7 @@ contract VerificationRegistry is
             _verifiers[verifierAddress].name != 0,
             "VerificationRegistry: Verifier Address Does Not Exist"
         );
+        delete _signers[_verifiers[verifierAddress].signer];
         delete _verifiers[verifierAddress];
         _verifierCount--;
         emit VerifierRemoved(verifierAddress);
@@ -180,6 +185,7 @@ contract VerificationRegistry is
      * Determine whether the subject address has a verification record that is not expired
      */
     function isVerified(address subject) external view returns (bool) {
+        require(subject != address(0), "VerificationRegistry: Invalid address");
         bytes32[] memory subjectRecords = _verificationsForSubject[subject];
         for (uint i = 0; i < subjectRecords.length; i++) {
             VerificationRecord memory record = _verifications[
@@ -211,6 +217,7 @@ contract VerificationRegistry is
         view
         returns (VerificationRecord[] memory)
     {
+        require(subject != address(0), "VerificationRegistry: Invalid address");
         bytes32[] memory subjectRecords = _verificationsForSubject[subject];
         VerificationRecord[] memory records = new VerificationRecord[](
             subjectRecords.length
@@ -232,6 +239,10 @@ contract VerificationRegistry is
         view
         returns (VerificationRecord[] memory)
     {
+        require(
+            verifier != address(0),
+            "VerificationRegistry: Invalid address"
+        );
         bytes32[] memory verifierRecords = _verificationsForVerifier[verifier];
         VerificationRecord[] memory records = new VerificationRecord[](
             verifierRecords.length
@@ -272,6 +283,55 @@ contract VerificationRegistry is
     }
 
     /**
+     * A verifier registers a VerificationResult after it has executed a
+     * successful verification. The contract will validate the result, and
+     * if it is valid and is signed by this calling verifier's signer,
+     * then the resulting VerificationRecord will be persisted and returned.
+     */
+    function registerVerification(
+        VerificationResult memory verificationResult,
+        bytes memory signature
+    ) external onlyVerifier returns (VerificationRecord memory) {
+        VerificationRecord
+            memory verificationRecord = _validateVerificationResult(
+                verificationResult,
+                signature
+            );
+        require(
+            verificationRecord.verifier == msg.sender,
+            "VerificationRegistry: Caller is not the verifier of the verification"
+        );
+        _persistVerificationRecord(verificationRecord);
+        emit VerificationResultConfirmed(verificationRecord);
+        return verificationRecord;
+    }
+
+    /**
+     * A caller may be the subject of a successful VerificationResult
+     * and register that verification itself rather than rely on the verifier
+     * to do so. The contract will validate the result, and if the result
+     * is valid, signed by a known verifier, and the subject of the verification
+     * is this caller, then the resulting VerificationRecord will be persisted and returned.
+     */
+    function registerVerificationBySubject(
+        VerificationResult memory verificationResult,
+        bytes memory signature
+    ) internal returns (VerificationRecord memory) {
+        require(
+            verificationResult.subject == msg.sender,
+            "VerificationRegistry: Caller is not the verified subject"
+        );
+        VerificationRecord
+            memory verificationRecord = _validateVerificationResult(
+                verificationResult,
+                signature
+            );
+        _persistVerificationRecord(verificationRecord);
+        emit VerificationResultConfirmed(verificationRecord);
+        return verificationRecord;
+    }
+
+    /**
      * A verifier provides a signed hash of a verification result it
      * has created for a subject address. This function recreates the hash
      * given the result artifacts and then uses it and the signature to recover
@@ -280,10 +340,10 @@ contract VerificationRegistry is
      * seconds since epoch), then the verification succeeds and is valid until revocation,
      * expiration, or removal from storage.
      */
-    function registerVerification(
+    function _validateVerificationResult(
         VerificationResult memory verificationResult,
         bytes memory signature
-    ) external onlyVerifier {
+    ) internal view returns (VerificationRecord memory) {
         bytes32 digest = _hashTypedDataV4(
             keccak256(
                 abi.encode(
@@ -300,21 +360,23 @@ contract VerificationRegistry is
 
         // use OpenZeppelin ECDSA to recover the public address corresponding to the
         // signature and regenerated hash
-        address signer = ECDSA.recover(digest, signature);
+        address signerAddress = ECDSA.recover(digest, signature);
+
+        address verifierAddress = _signers[signerAddress];
 
         require(
-            _verifiers[msg.sender].signer == signer,
-            "VerificationRegistry:: Signed digest cannot be verified"
+            _verifiers[verifierAddress].signer == signerAddress,
+            "VerificationRegistry: Signed digest cannot be verified"
         );
         require(
             verificationResult.expiration > block.timestamp,
-            "VerificationRegistry:: Verification confirmation expired"
+            "VerificationRegistry: Verification confirmation expired"
         );
 
         // create a VerificationRecord
         VerificationRecord memory verificationRecord = VerificationRecord({
             uuid: 0,
-            verifier: msg.sender,
+            verifier: verifierAddress,
             subject: verificationResult.subject,
             entryTime: block.timestamp,
             expirationTime: verificationResult.expiration,
@@ -324,14 +386,22 @@ contract VerificationRegistry is
         // generate a UUID for the record
         bytes32 uuid = _createVerificationRecordUUID(verificationRecord);
         verificationRecord.uuid = uuid;
+
+        return verificationRecord;
+    }
+
+    function _persistVerificationRecord(
+        VerificationRecord memory verificationRecord
+    ) internal {
+        // persist the record count and the record itself, and map the record to verifier and subject
         _verificationRecordCount++;
-
-        // persist the record and map it to verifier and subject
-        _verifications[uuid] = verificationRecord;
-        _verificationsForSubject[verificationRecord.subject].push(uuid);
-        _verificationsForVerifier[verificationRecord.verifier].push(uuid);
-
-        emit VerificationResultConfirmed(signer, verificationRecord);
+        _verifications[verificationRecord.uuid] = verificationRecord;
+        _verificationsForSubject[verificationRecord.subject].push(
+            verificationRecord.uuid
+        );
+        _verificationsForVerifier[verificationRecord.verifier].push(
+            verificationRecord.uuid
+        );
     }
 
     /**

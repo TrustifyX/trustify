@@ -7,8 +7,10 @@ import "./VerificationRegistry.sol";
 import "hardhat/console.sol";
 
 contract PermissionedToken is Ownable, ERC20 {
-    address private verificationRegistryAddress;
-    VerificationRegistry private verificationRegistry;
+    // this token uses a VerificationRegistry for KYC verifications
+    // additional registries for other types of credentials could also be used
+    address private kycRegistryAddress;
+    VerificationRegistry private kycRegistry;
 
     constructor(
         string memory name,
@@ -18,12 +20,13 @@ contract PermissionedToken is Ownable, ERC20 {
         _mint(msg.sender, initialSupply);
     }
 
-    function setRegistry(address account) external onlyOwner {
-        verificationRegistryAddress = account;
-        if (verificationRegistryAddress != address(0)) {
-            verificationRegistry = VerificationRegistry(
-                verificationRegistryAddress
-            );
+    function setVerificationRegistry(address registryAddress)
+        external
+        onlyOwner
+    {
+        kycRegistryAddress = registryAddress;
+        if (kycRegistryAddress != address(0)) {
+            kycRegistry = VerificationRegistry(kycRegistryAddress);
         }
     }
 
@@ -33,26 +36,30 @@ contract PermissionedToken is Ownable, ERC20 {
         uint256 amount
     ) internal virtual override {
         super._beforeTokenTransfer(from, to, amount);
-        if (verificationRegistryAddress != address(0)) {
+        if (kycRegistryAddress != address(0)) {
             // if the registry was always present, then the sender will always have been permissioned
-            // because otherwise the account never could have received, but since the registry
+            // because otherwise the registryAddress never could have received, but since the registry
             // may be removed by the Owner, we check the sender as well as receiver in this example
             require(
                 _validCounterparty(from),
-                "PermissionedToken: Invalid Sender"
+                "PermissionedToken: Sender is not verified"
             );
             require(
                 _validCounterparty(to),
-                "PermissionedToken: Invalid Recipient"
+                "PermissionedToken: Recipient in not verified"
             );
         }
     }
 
-    function _validCounterparty(address account) private view returns (bool) {
+    function _validCounterparty(address registryAddress)
+        private
+        view
+        returns (bool)
+    {
         // the Token could retrieve the verifications and filter based on
         // rules it applies regarding which records are acceptable, but in
         // this example, the Token merely tests for the presence of any valid
         // non-revoked non-expired verification record
-        return verificationRegistry.isVerified(account);
+        return kycRegistry.isVerified(registryAddress);
     }
 }
