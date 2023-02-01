@@ -1,6 +1,6 @@
-import { ethers } from "hardhat";
 import { expect } from "chai";
 import { Contract, Wallet } from "ethers";
+import { ethers } from "hardhat";
 
 describe("VerificationRegistry", function () {
   // create a wallet to generate a private key for signing verification results
@@ -134,14 +134,12 @@ describe("VerificationRegistry", function () {
         { name: "schema", type: "string" },
         { name: "subject", type: "address" },
         { name: "expiration", type: "uint256" },
-        { name: "payload", type: "bytes32" },
       ],
     };
     verificationResult = {
       schema: "centre.io/credentials/kyc",
       subject: subjectAddress,
       expiration: expiration,
-      payload: ethers.utils.formatBytes32String("example"),
     };
   });
 
@@ -244,7 +242,6 @@ describe("VerificationRegistry", function () {
       schema: "centre.io/credentials/kyc",
       subject: tokenOwner,
       expiration: expiration,
-      payload: ethers.utils.formatBytes32String("example"),
     };
     const signature = await signer._signTypedData(
       domain,
@@ -283,15 +280,9 @@ describe("VerificationRegistry", function () {
   });
 
   // a subject can remove verifications about itself -- note nothing on chains is really ever removed
-  it("Allow a subject to remove verfications about its address", async function () {
+  it("Should remove a verification", async function () {
     let record = await verificationRegistry.getVerification(recordUUID);
     expect(ethers.utils.getAddress(record.subject)).not.to.throw;
-    // remove verifier to ensure the subject is executing the removal, not the verifier
-    const removeVerifierTx = await verificationRegistry.removeVerifier(
-      contractOwnerAddress
-    );
-    // wait until the transaction is mined
-    await removeVerifierTx.wait();
     const removeTx = await verificationRegistry.removeVerification(recordUUID);
     removeTx.wait();
     record = await verificationRegistry.getVerification(recordUUID);
