@@ -158,7 +158,7 @@ contract VerificationRegistry is
     }
 
     /**
-     * R@inheritdoc IVerificationRegistry
+     * @inheritdoc IVerificationRegistry
      */
     function getVerification(bytes32 uuid)
         external
