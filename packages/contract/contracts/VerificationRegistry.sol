@@ -67,7 +67,7 @@ contract VerificationRegistry is
     /**
      * @inheritdoc IVerificationRegistry
      */
-    function getVerifierCount() external view override returns (uint) {
+    function getVerifierCount() external view override returns (uint256) {
         return _verifierCount;
     }
 
@@ -146,7 +146,7 @@ contract VerificationRegistry is
     function isVerified(address subject) external view override returns (bool) {
         require(subject != address(0), "VerificationRegistry: Invalid address");
         bytes32[] memory subjectRecords = _verificationsForSubject[subject];
-        for (uint i = 0; i < subjectRecords.length; i++) {
+        for (uint256 i = 0; i < subjectRecords.length; i++) {
             VerificationRecord memory record = _verifications[
                 subjectRecords[i]
             ];
@@ -183,7 +183,7 @@ contract VerificationRegistry is
         VerificationRecord[] memory records = new VerificationRecord[](
             subjectRecords.length
         );
-        for (uint i = 0; i < subjectRecords.length; i++) {
+        for (uint256 i = 0; i < subjectRecords.length; i++) {
             VerificationRecord memory record = _verifications[
                 subjectRecords[i]
             ];
@@ -209,7 +209,7 @@ contract VerificationRegistry is
         VerificationRecord[] memory records = new VerificationRecord[](
             verifierRecords.length
         );
-        for (uint i = 0; i < verifierRecords.length; i++) {
+        for (uint256 i = 0; i < verifierRecords.length; i++) {
             VerificationRecord memory record = _verifications[
                 verifierRecords[i]
             ];
@@ -345,12 +345,11 @@ contract VerificationRegistry is
             keccak256(
                 abi.encode(
                     keccak256(
-                        "VerificationResult(string schema,address subject,uint256 expiration,bytes32 payload)"
+                        "VerificationResult(string schema,address subject,uint256 expiration)"
                     ),
                     keccak256(bytes(verificationResult.schema)),
                     verificationResult.subject,
-                    verificationResult.expiration,
-                    verificationResult.payload
+                    verificationResult.expiration
                 )
             )
         );
