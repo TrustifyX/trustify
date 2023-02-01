@@ -137,7 +137,7 @@ contract VerificationRegistry is
      * @inheritdoc IVerificationRegistry
      */
     function getVerificationCount() external view override returns (uint256) {
-        return _verifierCount;
+        return _verificationRecordCount;
     }
 
     /**
