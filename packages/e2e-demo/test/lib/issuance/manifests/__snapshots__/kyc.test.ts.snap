@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests KYC Manifest tests for breaking KYC Manifest schema changes 1`] = `
+Object {
+  "format": Object {
+    "jwt_vc": Object {
+      "alg": Array [
+        "EdDSA",
+      ],
+    },
+    "jwt_vp": Object {
+      "alg": Array [
+        "EdDSA",
+      ],
+    },
+  },
+  "id": "KYCAMLManifest",
+  "issuer": Object {
+    "id": "did:web:demos.trustify.id",
+    "name": "Trustify",
+    "styles": Object {},
+  },
+  "output_descriptors": Array [
+    Object {
+      "description": "Attestation that Trustify has completed KYC/AML verification for this subject",
+      "display": Object {
+        "description": Object {
+          "text": "The KYC authority processes Know Your Customer and Anti-Money Laundering analysis, potentially employing a number of internal and external vendor providers.",
+        },
+        "properties": Array [
+          Object {
+            "label": "Process",
+            "path": Array [
+              "$.KYCAMLAttestation.process",
+            ],
+            "schema": Object {
+              "type": "string",
+            },
+          },
+          Object {
+            "label": "Approved At",
+            "path": Array [
+              "$.KYCAMLAttestation.approvalDate",
+            ],
+            "schema": Object {
+              "format": "date-time",
+              "type": "string",
+            },
+          },
+        ],
+        "subtitle": Object {
+          "fallback": "Includes date of approval",
+          "path": Array [
+            "$.approvalDate",
+            "$.vc.approvalDate",
+          ],
+        },
+        "title": Object {
+          "text": "Trustify KYC Attestation",
+        },
+      },
+      "id": "KYCAMLCredential",
+      "name": "Proof of KYC from Trustify",
+      "schema": "https://trustify.id/definitions/schemas/0.0.1/KYCAMLAttestation",
+      "styles": Object {
+        "background": Object {
+          "color": "#EC4899",
+        },
+        "hero": Object {
+          "alt": "KYC+AML Visual",
+          "uri": "http://test.host/img/kyc-aml-hero.png",
+        },
+        "text": Object {
+          "color": "#FFFFFF",
+        },
+        "thumbnail": Object {
+          "alt": "Trustify Logo",
+          "uri": "http://test.host/img/kyc-aml-thumbnail.png",
+        },
+      },
+    },
+  ],
+  "presentation_definition": Object {
+    "format": Object {
+      "jwt_vp": Object {
+        "alg": Array [
+          "EdDSA",
+        ],
+      },
+    },
+    "id": "ProofOfControlPresentationDefinition",
+    "input_descriptors": Array [
+      Object {
+        "constraints": Object {
+          "fields": Array [
+            Object {
+              "id": "holder",
+              "path": Array [
+                "$.holder",
+              ],
+              "purpose": "The VP should contain a DID in the holder, which is the same DID that signs the VP. This DID will be used as the subject of the issued VC",
+            },
+          ],
+        },
+        "format": Object {
+          "jwt_vp": Object {
+            "alg": Array [
+              "EdDSA",
+            ],
+          },
+        },
+        "id": "proofOfIdentifierControlVP",
+        "name": "Proof of Control Verifiable Presentation",
+        "purpose": "A VP establishing proof of identifier control over the DID.",
+      },
+    ],
+  },
+  "spec_version": "https://identity.foundation/credential-manifest/spec/v1.0.0/",
+}
+`;

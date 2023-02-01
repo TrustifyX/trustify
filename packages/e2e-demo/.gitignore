@@ -14,7 +14,6 @@
 
 # production
 /build
-.build/
 
 # misc
 .DS_Store
@@ -23,10 +22,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# next.js
-.next
-out
 
 # local env files
 .env.local
@@ -37,20 +32,8 @@ out
 # IDE files
 .vscode/
 
-#Hardhat files
-cache
-artifacts
-node_modules
-# coverage
-coverage
+# Temp files
+tmp/*
 
-# Docs
-.docusaurus
-.cache-loader
-build
-
-# Build artifacts
-*.tsbuildinfo
-
-# App store config
-eas.json
+# Contract details
+/contracts

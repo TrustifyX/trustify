@@ -14,19 +14,15 @@
 
 # production
 /build
-.build/
 
 # misc
 .DS_Store
+*.pem
 
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# next.js
-.next
-out
 
 # local env files
 .env.local
@@ -34,23 +30,5 @@ out
 .env.test.local
 .env.production.local
 
-# IDE files
-.vscode/
-
-#Hardhat files
-cache
-artifacts
-node_modules
-# coverage
-coverage
-
-# Docs
-.docusaurus
-.cache-loader
-build
-
-# Build artifacts
-*.tsbuildinfo
-
-# App store config
-eas.json
+# vercel
+.vercel
