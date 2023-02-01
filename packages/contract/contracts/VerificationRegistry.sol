@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.9;
+pragma solidity ^0.8.17;
 
 import "./IVerificationRegistry.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
