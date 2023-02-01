@@ -1,98 +1,52 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.9;
 
+import "./IVerificationRegistry.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import "@openzeppelin/contracts/utils/cryptography/draft-EIP712.sol";
 import "hardhat/console.sol";
 
+/**
+ * @title A persistent IVerificationRegistry implementation.
+ */
 contract VerificationRegistry is
     Ownable,
-    EIP712("VerificationRegistry", "1.0")
+    EIP712("VerificationRegistry", "1.0"),
+    IVerificationRegistry
 {
-    /**
-     * Info about Verifiers
-     */
-    struct VerifierInfo {
-        bytes32 name;
-        string did;
-        string url;
-        address signer;
-    }
-
-    /**
-     * A verifier will submit a verification result in this format.
-     */
-    struct VerificationResult {
-        string schema; // indicator of the type of verification result
-        address subject; // address of the subject of the verification
-        uint256 expiration; // expiration of verification (may or may not be expiration of the VC)
-        bytes32 payload; // arbitrary data associated with the verification that may be employed in app logic
-    }
-
-    /**
-     * The registry will accept VerificationResults submitted to it,
-     * and if valid, will persist them on-chain as VerificationRecords
-     */
-    struct VerificationRecord {
-        bytes32 uuid; // generated in contract, and also enables offchain verifier-persisted info related to verification
-        address verifier; // address of verifier, can be used to pull VerifierInfo
-        address subject; // address of the subject, the recipient of a successful verification
-        uint256 entryTime; // time at which the verification was proven and recorded (not the time of verification)
-        uint256 expirationTime; // expiration of verification (may or may not be expiration of the VC)
-        bool revoked; // revoked or valid and active
-    }
-
-    /**
-     * Verifier Delegate addresses that sign verification results mapped to
-     * metadata about the Verifier Delegates.
-     */
+    // Verifier addresses mapped to metadata (VerifierInfo) about the Verifiers.
     mapping(address => VerifierInfo) private _verifiers;
 
-    /**
-     * Verifier signing keys mapped to verifier addresses
-     */
+    // Verifier signing keys mapped to verifier addresses
     mapping(address => address) private _signers;
 
-    /**
-     * Total number of active registered verifiers
-     */
+    // Total number of active registered verifiers
     uint256 _verifierCount;
 
-    // all verification records keyed by their uuids
+    // All verification records keyed by their uuids
     mapping(bytes32 => VerificationRecord) private _verifications;
 
-    // verifications mapped to subject addresses (those who receive verifications)
+    // Verifications mapped to subject addresses (those who receive verifications)
     mapping(address => bytes32[]) private _verificationsForSubject;
 
-    // verfications issued by a given trusted verifier (those who execute verifications)
+    // Verfications issued by a given trusted verifier (those who execute verifications)
     mapping(address => bytes32[]) private _verificationsForVerifier;
 
-    // total verifications registered (mapping keys not being enumerable, countable, etc)
+    // Total verifications registered (mapping keys not being enumerable, countable, etc)
     uint256 private _verificationRecordCount;
-
-    /**********************/
-    /* EVENT DECLARATIONS */
-    /**********************/
-
-    event VerifierAdded(address verifier, VerifierInfo verifierInfo);
-    event VerifierUpdated(address verifier, VerifierInfo verifierInfo);
-    event VerifierRemoved(address verifier);
-    event VerificationResultConfirmed(VerificationRecord verificationRecord);
-    event VerificationRevoked(bytes32 uuid);
-    event VerificationRemoved(bytes32 uuid);
 
     /*****************************/
     /* VERIFIER MANAGEMENT LOGIC */
     /*****************************/
 
     /**
-     * The Owner adds a Verifier Delegate to the contract.
+     * @inheritdoc IVerificationRegistry
      */
     function addVerifier(
         address verifierAddress,
         VerifierInfo memory verifierInfo
-    ) external onlyOwner {
+    ) external override onlyOwner {
         require(
             _verifiers[verifierAddress].name == 0,
             "VerificationRegistry: Verifier Address Exists"
@@ -104,25 +58,26 @@ contract VerificationRegistry is
     }
 
     /**
-     * Query whether an address is a Verifier Delegate.
+     * @inheritdoc IVerificationRegistry
      */
-    function isVerifier(address account) external view returns (bool) {
+    function isVerifier(address account) external view override returns (bool) {
         return _verifiers[account].name != 0;
     }
 
     /**
-     * Retrieve the number of registered Verifier Delegates
+     * @inheritdoc IVerificationRegistry
      */
-    function getVerifierCount() external view returns (uint) {
+    function getVerifierCount() external view override returns (uint) {
         return _verifierCount;
     }
 
     /**
-     * Request information about a Verifier Delegate based on its signing address.
+     * @inheritdoc IVerificationRegistry
      */
     function getVerifier(address verifierAddress)
         external
         view
+        override
         returns (VerifierInfo memory)
     {
         require(
@@ -133,12 +88,12 @@ contract VerificationRegistry is
     }
 
     /**
-     * The onwer updates an existing Verifier Delegate's did, URL, and name.
+     * @inheritdoc IVerificationRegistry
      */
     function updateVerifier(
         address verifierAddress,
         VerifierInfo memory verifierInfo
-    ) external onlyOwner {
+    ) external override onlyOwner {
         require(
             _verifiers[verifierAddress].name != 0,
             "VerificationRegistry: Unknown Verifier Address"
@@ -149,9 +104,13 @@ contract VerificationRegistry is
     }
 
     /**
-     * The owner can remove a Verifier Delegate from the contract.
+     * @inheritdoc IVerificationRegistry
      */
-    function removeVerifier(address verifierAddress) external onlyOwner {
+    function removeVerifier(address verifierAddress)
+        external
+        override
+        onlyOwner
+    {
         require(
             _verifiers[verifierAddress].name != 0,
             "VerificationRegistry: Verifier Address Does Not Exist"
@@ -175,16 +134,16 @@ contract VerificationRegistry is
     }
 
     /**
-     * Retrieve the current total number of registered VerificationRecords
+     * @inheritdoc IVerificationRegistry
      */
-    function getVerificationCount() external view returns (uint256) {
+    function getVerificationCount() external view override returns (uint256) {
         return _verifierCount;
     }
 
     /**
-     * Determine whether the subject address has a verification record that is not expired
+     * @inheritdoc IVerificationRegistry
      */
-    function isVerified(address subject) external view returns (bool) {
+    function isVerified(address subject) external view override returns (bool) {
         require(subject != address(0), "VerificationRegistry: Invalid address");
         bytes32[] memory subjectRecords = _verificationsForSubject[subject];
         for (uint i = 0; i < subjectRecords.length; i++) {
@@ -199,22 +158,24 @@ contract VerificationRegistry is
     }
 
     /**
-     * Retrieve a specific Verification Record by its uuid
+     * R@inheritdoc IVerificationRegistry
      */
     function getVerification(bytes32 uuid)
         external
         view
+        override
         returns (VerificationRecord memory)
     {
         return _verifications[uuid];
     }
 
     /**
-     * Retrieve all of the verification records associated with this subject address
+     * @inheritdoc IVerificationRegistry
      */
     function getVerificationsForSubject(address subject)
         external
         view
+        override
         returns (VerificationRecord[] memory)
     {
         require(subject != address(0), "VerificationRegistry: Invalid address");
@@ -232,11 +193,12 @@ contract VerificationRegistry is
     }
 
     /**
-     * Retrieve all of the verification records associated with this verifier address
+     * @inheritdoc IVerificationRegistry
      */
     function getVerificationsForVerifier(address verifier)
         external
         view
+        override
         returns (VerificationRecord[] memory)
     {
         require(
@@ -257,9 +219,9 @@ contract VerificationRegistry is
     }
 
     /**
-     * Verifiers can revoke Verification Records they previously created
+     * @inheritdoc IVerificationRegistry
      */
-    function revokeVerification(bytes32 uuid) external onlyVerifier {
+    function revokeVerification(bytes32 uuid) external override onlyVerifier {
         require(
             _verifications[uuid].verifier == msg.sender,
             "VerificationRegistry: Caller is not the original verifier"
@@ -269,29 +231,25 @@ contract VerificationRegistry is
     }
 
     /**
-     * Subjects can remove verifications about themselves, and
-     * verifiers can remove verifications they previously created
+     * @inheritdoc IVerificationRegistry
      */
-    function removeVerification(bytes32 uuid) external {
+    function removeVerification(bytes32 uuid) external override onlyVerifier {
         require(
-            (_verifications[uuid].subject == msg.sender) ||
-                (_verifications[uuid].verifier == msg.sender),
-            "VerificationRegistry: Caller is neither the subject nor the verifier of the referenced record"
+            _verifications[uuid].verifier == msg.sender,
+            "VerificationRegistry: Caller is not the verifier of the referenced record"
         );
         delete _verifications[uuid];
         emit VerificationRemoved(uuid);
     }
 
     /**
-     * A verifier registers a VerificationResult after it has executed a
-     * successful verification. The contract will validate the result, and
-     * if it is valid and is signed by this calling verifier's signer,
-     * then the resulting VerificationRecord will be persisted and returned.
+     * @inheritdoc IVerificationRegistry
      */
     function registerVerification(
         VerificationResult memory verificationResult,
         bytes memory signature
-    ) external onlyVerifier returns (VerificationRecord memory) {
+    ) external override onlyVerifier returns (VerificationRecord memory) {
+        _beforeVerificationValidation(verificationResult);
         VerificationRecord
             memory verificationRecord = _validateVerificationResult(
                 verificationResult,
@@ -308,12 +266,16 @@ contract VerificationRegistry is
 
     /**
      * A caller may be the subject of a successful VerificationResult
-     * and register that verification itself rather than rely on the verifier
-     * to do so. The contract will validate the result, and if the result
+     * and register that verification itself rather than rely on a verifier
+     * to do so. The registry will validate the result, and if the result
      * is valid, signed by a known verifier, and the subject of the verification
      * is this caller, then the resulting VerificationRecord will be persisted and returned.
+     *
+     * To use this pattern, a derived contract should inherit and invoke this function,
+     * otherwise the caller will not be the subject but an intermediary.
+     * See ThresholdToken.sol for a simple example.
      */
-    function registerVerificationBySubject(
+    function _registerVerificationBySubject(
         VerificationResult memory verificationResult,
         bytes memory signature
     ) internal returns (VerificationRecord memory) {
@@ -321,6 +283,7 @@ contract VerificationRegistry is
             verificationResult.subject == msg.sender,
             "VerificationRegistry: Caller is not the verified subject"
         );
+        _beforeVerificationValidation(verificationResult);
         VerificationRecord
             memory verificationRecord = _validateVerificationResult(
                 verificationResult,
@@ -330,6 +293,40 @@ contract VerificationRegistry is
         emit VerificationResultConfirmed(verificationRecord);
         return verificationRecord;
     }
+
+    /**
+     * A subject can remove records about itself, similarly to how a verifier can
+     * remove records about a subject. Nothing is truly 'deleted' from on-chain storage,
+     * as the record exists in previous state, but this does prevent the record from
+     * usage in the future.
+     *
+     * To use this pattern, a derived contract should inherit and invoke this function,
+     * otherwise the caller will not be the subject but an intermediary.
+     * See ThresholdToken.sol for a simple example.
+     */
+    function _removeVerificationBySubject(bytes32 uuid) internal {
+        require(
+            _verifications[uuid].subject == msg.sender,
+            "VerificationRegistry: Caller is not the subject of the referenced record"
+        );
+        delete _verifications[uuid];
+        emit VerificationRemoved(uuid);
+    }
+
+    /***********************************/
+    /* VERIFICATION INTERNAL MECHANICS */
+    /***********************************/
+
+    /**
+     * This hook may be overridden to enable registry-specific or credential-specific
+     * filtering of a Verification Result. For example, a registry devoted to risk scoring
+     * or accredited investor status may make assertions based on the result's payload
+     * or on the designation of the issuer or verifier. The default behavior is a no-op,
+     * no additional processing of the payload or other properties is executed.
+     */
+    function _beforeVerificationValidation(
+        VerificationResult memory verificationResult
+    ) internal {}
 
     /**
      * A verifier provides a signed hash of a verification result it
@@ -393,6 +390,11 @@ contract VerificationRegistry is
         return verificationRecord;
     }
 
+    /**
+     * After validating a Verification Result and generating a Verification Record,
+     * the registry increments the record count, adds the record to a map based on its uuid,
+     * and associates the record's uuid with the verifier's and subject's existing record mappings.
+     */
     function _persistVerificationRecord(
         VerificationRecord memory verificationRecord
     ) internal {
@@ -408,7 +410,7 @@ contract VerificationRegistry is
     }
 
     /**
-     * Generate a UUID for a VerificationRecord
+     * Generate a UUID for a VerificationRecord.
      */
     function _createVerificationRecordUUID(
         VerificationRecord memory verificationRecord
