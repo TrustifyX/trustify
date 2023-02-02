@@ -58,7 +58,7 @@ const RequirePassword: FC<Props> = ({ children, passwordSuccessful }) => {
                   type="password"
                   name="password"
                   id="password"
-                  className="block w-full pl-10 border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  className="block w-full pl-10 border-gray-300 rounded-md focus:ring-blue-500 focus:border-cyan-400 sm:text-sm"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />

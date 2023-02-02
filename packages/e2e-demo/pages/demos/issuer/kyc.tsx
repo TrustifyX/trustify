@@ -93,8 +93,8 @@ const KycAmlPage: NextPage<Props> = ({
       </div>
     ) : (
       <>
-        <h2>KYC/AML Verifiable Credential Issue User Experience</h2>
-        <p className="pb-4">
+        <h2 className="text-gray-200">KYC/AML Verifiable Credential Issue User Experience</h2>
+        <p className="pb-4 text-gray-200">
           Credentials and DID data may be custodied in crypto/identity wallets
           such as browser extensions, mobile apps, or hosted wallet providers.
           For this demo, begin the request protocol by scanning this QR code
@@ -102,14 +102,14 @@ const KycAmlPage: NextPage<Props> = ({
         </p>
         <QRCodeSVG
           value={JSON.stringify(qrCodeData)}
-          className="w-48 h-48 mx-auto"
+          className="w-48 h-48 mx-auto text-gray-200"
         />
-        <h2>Behind the Scenes</h2>
-        <p>
-          The QR code contains a <code>challengeTokenUrl</code> that enables the
+        <h2 className="text-gray-200">Behind the Scenes</h2>
+        <p className="text-gray-200">
+          The QR code contains a <code className="text-gray-200">challengeTokenUrl</code> that enables the
           wallet to retrieve a{" "}
           <Link href="https://identity.foundation/credential-manifest/">
-            <a target="_blank">Credential Manifest</a>
+            <a target="_blank" className="text-gray-200">Credential Manifest</a>
           </Link>{" "}
           defining the credentials that the issuer can issue and how a wallet
           can request them. Credential Manifests are a developing standard by
@@ -118,7 +118,7 @@ const KycAmlPage: NextPage<Props> = ({
 
         <pre>{JSON.stringify(qrCodeData, null, 4)}</pre>
 
-        <p>
+        <p className="text-gray-200">
           This Credential Manifest contains the DID of the issuer, information
           about the supported cryptographic algorithms used in credentials and
           presentations, requirements for the requesting wallet (such as proving
@@ -128,7 +128,7 @@ const KycAmlPage: NextPage<Props> = ({
 
         <Disclosure>
           <Disclosure.Button>
-            <p className="font-semibold underline text-md">
+            <p className="font-semibold underline text-md text-gray-200">
               Show/Hide the Complete Credential Manifest
             </p>
           </Disclosure.Button>
@@ -137,7 +137,7 @@ const KycAmlPage: NextPage<Props> = ({
           </Disclosure.Panel>
         </Disclosure>
 
-        <p>
+        <p className="text-gray-200">
           After scanning the QR code and completing the protocol sequence, you
           will be able to view the actual Verifiable Credential.
         </p>

@@ -33,15 +33,15 @@ export const getServerSideProps = requireAuth(async () => {
 const IssuerPickerPage: NextPage = () => {
   return (
     <IssuerLayout hideNavigation={true}>
-      <div className="pb-2 prose max-w-none">
-        <h2>Request and Custody Verifiable Credentials</h2>
+      <div className="pb-2 prose max-w-none text-gray-200">
+        <h2 className="text-gray-200">Request and Custody Verifiable Credentials</h2>
         <p>
           When you sign into your account at Circle, Coinbase, Square, or
           another trusted institution, you might request credentials that prove
           those providers have confirmed your identity, credit/risk score,
           accredited investor status, or other key claims.
         </p>
-        <p className="font-semibold">
+        <p className="font-semibold text-gray-200">
           Select a Verifiable Credentials below to see how issuance works:
         </p>
       </div>

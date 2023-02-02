@@ -24,7 +24,7 @@ export default function Tabs({ tabs }: Props): JSX.Element {
         <select
           id="tabs"
           name="tabs"
-          className="block w-full border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+          className="block w-full border-gray-300 rounded-md focus:ring-blue-500 focus:border-cyan-400"
           defaultValue={tabs.find((tab) => tab.current).name}
         >
           {tabs.map((tab) => (

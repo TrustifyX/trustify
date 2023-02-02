@@ -53,7 +53,7 @@ const Transfer: FC<TransferProps> = ({
             Amount of {tokenSymbol}
           </label>
           <input
-            className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-cyan-400 sm:text-sm"
             type="number"
             step="1"
             value={amount}
@@ -67,7 +67,7 @@ const Transfer: FC<TransferProps> = ({
             Recipient address
           </label>
           <input
-            className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-cyan-400 sm:text-sm"
             type="text"
             value={to}
             onChange={(e) => setTo(e.target.value)}

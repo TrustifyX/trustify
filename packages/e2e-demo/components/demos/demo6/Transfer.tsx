@@ -50,7 +50,7 @@ const Transfer: FC<TransferProps> = ({ onTransfer, transferTokens, asset }) => {
             Amount of {asset.name}
           </label>
           <input
-            className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-cyan-400 sm:text-sm"
             type="number"
             step="1"
             value={amount}
