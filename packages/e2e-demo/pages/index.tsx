@@ -23,6 +23,19 @@ const Home: NextPage = () => {
         that links identity proofs to crypto finance experiences
       </p>
 
+      {/* require("../../static/img/undraw_building_blocks_n0nc.svg").default */}
+      {/* Svg: require("../../static/img/undraw_Safe_re_kiil.svg").default, */}
+      {/* Svg: require("../../static/img/undraw_online_transactions_02ka.svg") */}
+      {/* /img/undraw_connected_world_wuay.svg */}
+      {/* undraw_docusaurus_mountain */}
+
+      <Image
+        src="/img/undraw_Safe_re_kiil.svg"
+        width="1180"
+        height="380"
+        alt="Overview Sequence"
+      />
+
       <div className="my-8">
         <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
           {/* Issue */}
