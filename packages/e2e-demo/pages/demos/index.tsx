@@ -33,12 +33,6 @@ const DEMOS = [
     href: "/demos/demo6",
     description:
       "An example of how a lending market Dapp can require KYC verification before depositing assets."
-  },
-  {
-    title: "Centralized app with travel rule",
-    href: "/demos/cefi",
-    description:
-      "An example of how a centralized service could satisfy Travel Rule requirements before performing a transaction."
   }
 ]
 

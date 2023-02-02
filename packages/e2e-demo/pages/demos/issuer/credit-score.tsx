@@ -92,45 +92,45 @@ const CreditScorePage: NextPage<Props> = ({
       </div>
     ) : (
       <>
-        <h2>Credit Score Verifiable Credential Issue User Experience</h2>
-        <p>
+        <h2 className="text-gray-200">Credit Score Verifiable Credential Issue User Experience</h2>
+        <p className="text-gray-200">
           Credentials contain data specific to their schema types. Compared to a
           KYC/AML credential, a credential that attests to a credit score has
           additional data to contain a numeric score, and the credential expires
           relatively quickly.
         </p>
-        <p>
+        <p className="text-gray-200">
           The currently signed-in user for this demonstration has the following
           credit score:
         </p>
         <dl className="flex flex-row justify-center mx-auto space-x-2 sm:space-x-5">
-          <div className="px-4 py-3 overflow-hidden text-center bg-gray-300 rounded-lg shadow sm:py-2 sm:px-4 flex-0">
-            <dt className="mt-1 text-3xl font-semibold text-gray-200">
+          <div className="px-4 py-3 overflow-hidden text-center bg-amber-300 rounded-lg shadow sm:py-2 sm:px-4 flex-0 text-gray-200">
+            <dt className="mt-1 text-3xl font-semibold text-gray-900">
               {user.creditScore}
             </dt>
-            <dd>Experian</dd>
+            <dd className="text-gray-900">Experian</dd>
           </div>
         </dl>
-        <p>
+        <p className="text-gray-200">
           Request a VC for this credit score by scanning this QR code with the
           Trustify mobile app:
         </p>
         <QRCodeSVG
           value={JSON.stringify(qrCodeData)}
-          className="w-48 h-48 mx-auto"
+          className="w-48 h-48 mx-auto text-gray-200"
         />
-        <p>
-          <strong>NOTE: </strong> In this demo, the credit score credential{" "}
-          <strong>will expire after 1 minute</strong>.
+        <p className="text-gray-200">
+          <strong className="text-gray-200">NOTE: </strong> In this demo, the credit score credential{" "}
+          <strong className="text-gray-200">will expire after 1 minute</strong>.
         </p>
 
-        <h2>Behind the Scenes</h2>
+        <h2 className="text-gray-200">Behind the Scenes</h2>
 
-        <p>
+        <p className="text-gray-200">
           As in the KYC/AML example, the QR code contains a{" "}
-          <code>challengeTokenUrl</code> that enables the wallet to retrieve a{" "}
+          <code className="text-gray-200">challengeTokenUrl</code> that enables the wallet to retrieve a{" "}
           <Link href="https://identity.foundation/credential-manifest/">
-            <a target="_blank">Credential Manifest</a>
+            <a target="_blank" className="text-gray-200">Credential Manifest</a>
           </Link>{" "}
           defining the credentials that the issuer can issue and how a wallet
           can request them. It looks like this:
@@ -140,7 +140,7 @@ const CreditScorePage: NextPage<Props> = ({
 
         <Disclosure>
           <Disclosure.Button>
-            <p className="font-semibold underline text-md">
+            <p className="font-semibold underline text-md text-gray-200">
               Show/Hide the Complete Credential Manifest
             </p>
           </Disclosure.Button>
@@ -149,7 +149,7 @@ const CreditScorePage: NextPage<Props> = ({
           </Disclosure.Panel>
         </Disclosure>
 
-        <p>
+        <p className="text-gray-200">
           After scanning the QR code and completing the protocol sequence, you
           will be able to view the actual Verifiable Credential.
         </p>
