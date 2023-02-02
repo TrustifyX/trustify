@@ -111,11 +111,11 @@ const Page: NextPage = () => {
               ></PickupPanel>
             ) : null}
 
-            <h3 className="text-lg font-medium leading-6 text-gray-900">
+            <h3 className="text-lg font-medium leading-6 text-gray-200">
               Receive VUSDC
             </h3>
 
-            <p className="text-gray-500 max-w-4xltext-sm">
+            <p className="text-gray-200 max-w-4xltext-sm">
               You can receive VUSDC at this address:
             </p>
             <p>{data?.address}</p>

@@ -26,8 +26,8 @@ const items = [
 const VerifierPage: NextPage = () => {
   return (
     <VerifierLayout>
-      <div className="pb-2 prose max-w-none">
-        <h2>Verify an Identity&apos;s Credentials</h2>
+      <div className="pb-2 prose max-w-none text-gray-200">
+        <h2 className="text-gray-200">Verify an Identity&apos;s Credentials</h2>
         <p>
           Smart contracts, financial insitutions, agencies, apps, and devices
           can verify credentials by implementing support for the{" "}
@@ -57,7 +57,7 @@ const VerifierPage: NextPage = () => {
       >
         {items.map((item, itemIdx) => (
           <li key={itemIdx}>
-            <div className="relative flex items-start py-4 space-x-3 group hover:bg-gray-50">
+            <div className="relative flex items-start py-4 space-x-3 group hover:bg-gray-900">
               <div className="flex-shrink-0">
                 <span
                   className={`${item.iconColor} inline-flex items-center justify-center h-10 w-10 rounded-lg`}
@@ -69,7 +69,7 @@ const VerifierPage: NextPage = () => {
                 </span>
               </div>
               <div className="flex-1 min-w-0">
-                <div className="text-sm font-medium text-gray-900">
+                <div className="text-sm font-medium text-gray-200">
                   <Link href={item.href}>
                     <a>
                       <span className="absolute inset-0" aria-hidden="true" />
@@ -77,11 +77,11 @@ const VerifierPage: NextPage = () => {
                     </a>
                   </Link>
                 </div>
-                <p className="text-sm text-gray-500">{item.description}</p>
+                <p className="text-sm text-gray-200">{item.description}</p>
               </div>
               <div className="self-center flex-shrink-0">
                 <ChevronRightIcon
-                  className="w-5 h-5 text-gray-400 group-hover:text-gray-500"
+                  className="w-5 h-5 text-gray-200 group-hover:text-gray-200"
                   aria-hidden="true"
                 />
               </div>

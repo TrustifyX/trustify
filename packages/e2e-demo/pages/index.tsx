@@ -17,35 +17,28 @@ import Layout from "../components/shared/Layout"
  */
 const Home: NextPage = () => {
   return (
-    <Layout title="Decentralized Identity for Crypto Finance.">
-      <p className="mx-auto mb-8 text-xl text-gray-500 max-w-prose">
+    <Layout title="Decentralized Identity for FVM DeFi and DataDAO">
+      <p className="mx-auto mb-8 text-xl text-center text-gray-200 max-w-prose">
         Trustify defines data models, protocol recipes, and open source software
-        that links identity proofs to crypto finance experiences.
+        that links identity proofs to crypto finance experiences
       </p>
-
-      <Image
-        src="/img/sequence-overview.png"
-        width="1180"
-        height="380"
-        alt="Overview Sequence"
-      />
 
       <div className="my-8">
         <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
           {/* Issue */}
           <div className="relative">
             <dt>
-              <div className="absolute flex items-center justify-center w-12 h-12 text-white bg-blue-500 rounded-md">
+              <div className="absolute flex items-center justify-center w-12 h-12 text-white bg-amber-300 rounded-md">
                 <InboxInIcon
-                  className="w-6 h-6 text-white"
+                  className="w-6 h-6 text-gray-900"
                   aria-hidden="true"
                 />
               </div>
-              <h3 className="ml-16 text-lg font-bold leading-6 text-gray-900">
-                Issue
+              <h3 className="ml-16 text-lg font-bold leading-6 text-gray-200">
+                ISSUE
               </h3>
             </dt>
-            <dd className="mt-2 ml-16 text-base text-gray-500">
+            <dd className="mt-2 ml-16 text-base text-gray-200">
               <p className="">
                 Identities are defined by traits called <i>claims</i>. One
                 identity can attest to the authenticity and correctness of
@@ -71,17 +64,17 @@ const Home: NextPage = () => {
           {/* Custody */}
           <div className="relative">
             <dt>
-              <div className="absolute flex items-center justify-center w-12 h-12 text-white bg-blue-500 rounded-md">
+              <div className="absolute flex items-center justify-center w-12 h-12 text-white bg-amber-300 rounded-md">
                 <BriefcaseIcon
-                  className="w-6 h-6 text-white"
+                  className="w-6 h-6 text-gray-900"
                   aria-hidden="true"
                 />
               </div>
-              <h3 className="ml-16 text-lg font-bold leading-6 text-gray-900">
-                Custody
+              <h3 className="ml-16 text-lg font-bold leading-6 text-gray-200">
+                CUSTODY
               </h3>
             </dt>
-            <dd className="mt-2 ml-16 text-base text-gray-500">
+            <dd className="mt-2 ml-16 text-base text-gray-200">
               People and institutions &mdash; the <i>subjects</i> of the
               credentials &mdash; custody their Verifiable Credentials in
               wallets just as they hold their own USDC and other crypto assets.
@@ -94,18 +87,18 @@ const Home: NextPage = () => {
           {/* Verify */}
           <div className="relative">
             <dt>
-              <div className="absolute flex items-center justify-center w-12 h-12 text-white bg-blue-500 rounded-md">
+              <div className="absolute flex items-center justify-center w-12 h-12 text-white bg-amber-300 rounded-md">
                 <BadgeCheckIcon
-                  className="w-6 h-6 text-white"
+                  className="w-6 h-6 text-gray-900"
                   aria-hidden="true"
                 />
               </div>
-              <h3 className="ml-16 text-lg font-bold leading-6 text-gray-900">
-                Verify
+              <h3 className="ml-16 text-lg font-bold leading-6 text-gray-200">
+                VERIFY
               </h3>
             </dt>
 
-            <dd className="mt-2 ml-16 text-base text-gray-500">
+            <dd className="mt-2 ml-16 text-base text-gray-200">
               <p className="">
                 People, institutions, and smart contracts can verify credentials
                 without accessing the private information used in the issuance
@@ -132,17 +125,17 @@ const Home: NextPage = () => {
           {/* Identify */}
           <div className="relative">
             <dt>
-              <div className="absolute flex items-center justify-center w-12 h-12 text-white bg-blue-500 rounded-md">
+              <div className="absolute flex items-center justify-center w-12 h-12 text-white bg-amber-300 rounded-md">
                 <IdentificationIcon
-                  className="w-6 h-6 text-white"
+                  className="w-6 h-6 text-gray-900"
                   aria-hidden="true"
                 />
               </div>
-              <h3 className="ml-16 text-lg font-bold leading-6 text-gray-900">
-                Identify
+              <h3 className="ml-16 text-lg font-bold leading-6 text-gray-200">
+                IDENTITY
               </h3>
             </dt>
-            <dd className="mt-2 ml-16 text-base text-gray-500">
+            <dd className="mt-2 ml-16 text-base text-gray-200">
               Issuers, subjects, and verifiers of credentials are identified by
               unique Decentralized Identifiers, or{" "}
               <a
@@ -165,7 +158,7 @@ const Home: NextPage = () => {
 
       <div>
         <Link href="/demos">
-          <a className="flex items-center justify-center w-full px-4 py-2 pt-4 pb-4 font-bold text-white bg-blue-600 border border-transparent rounded-md shadow-sm text-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+          <a className="flex items-center justify-center w-full px-4 py-2 pt-4 pb-4 font-bold text-gray-900 bg-amber-300 border border-transparent rounded-full shadow-sm text-md hover:bg-amber-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
             <BadgeCheckIcon className="mr-2 -ml-1 w-7 h-7" aria-hidden="true" />
             View the Demos
           </a>

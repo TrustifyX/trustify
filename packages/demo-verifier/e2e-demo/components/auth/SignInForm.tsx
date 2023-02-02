@@ -41,7 +41,7 @@ const SignInForm: FC<Props> = ({ redirectTo }) => {
             onClick={() => {
               signInAs(sampleUser)
             }}
-            className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50"
+            className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-200 bg-gray-300 border border-gray-300 rounded-md shadow-sm hover:bg-gray-900"
           >
             {sampleUser.email}
           </LoadingButton>

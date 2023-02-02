@@ -20,31 +20,31 @@ const MarketList: FC<Props> = ({ assets, setSelected }) => {
                   <tr>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                      className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-200 uppercase"
                     >
                       Assets
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                      className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-200 uppercase"
                     >
                       Market size
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                      className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-200 uppercase"
                     >
                       Total borrowed
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                      className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-200 uppercase"
                     >
                       Deposit APY
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                      className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-200 uppercase"
                     >
                       Borrow APY
                     </th>
@@ -53,7 +53,7 @@ const MarketList: FC<Props> = ({ assets, setSelected }) => {
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className="bg-gray-300 divide-y divide-gray-200">
                   {assets.map((asset) => (
                     <tr key={asset.name}>
                       <td className="px-6 py-4 whitespace-nowrap">
@@ -68,24 +68,24 @@ const MarketList: FC<Props> = ({ assets, setSelected }) => {
                             />
                           </div>
                           <div className="ml-4">
-                            <div className="text-sm font-medium text-gray-900">
+                            <div className="text-sm font-medium text-gray-200">
                               {asset.name}
                             </div>
                           </div>
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">
+                        <div className="text-sm text-gray-200">
                           {asset.market}
                         </div>
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                      <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
                         {asset.borrowed}
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                      <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
                         {asset.deposit}
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                      <td className="px-6 py-4 text-sm text-gray-200 whitespace-nowrap">
                         {asset.borrow}
                       </td>
                       <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">

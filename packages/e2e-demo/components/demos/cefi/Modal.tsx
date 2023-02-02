@@ -25,7 +25,7 @@ export default function Modal({
   const user = session.user
 
   const credential = (
-    <pre className="mt-4 text-sm text-gray-500">
+    <pre className="mt-4 text-sm text-gray-200">
       {user.fullName}
       <br />
       123 Main Street
@@ -71,7 +71,7 @@ export default function Modal({
             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
-            <div className="inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
+            <div className="inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-gray-300 rounded-lg shadow-xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
               <div className="sm:flex sm:items-start">
                 <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 mx-auto bg-red-100 rounded-full sm:mx-0 sm:h-10 sm:w-10">
                   <ExclamationIcon
@@ -82,12 +82,12 @@ export default function Modal({
                 <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
+                    className="text-lg font-medium leading-6 text-gray-200"
                   >
                     Share your information
                   </Dialog.Title>
                   <div className="mt-2 prose">
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-gray-200">
                       The transfer you are attempting to make requires that we
                       provide your information to the intermediary financial
                       institution handling the receipt of the funds. Do you want
@@ -111,7 +111,7 @@ export default function Modal({
                 </button>
                 <button
                   type="button"
-                  className="inline-flex justify-center w-full px-4 py-2 mt-3 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:w-auto sm:text-sm"
+                  className="inline-flex justify-center w-full px-4 py-2 mt-3 text-base font-medium text-gray-700 bg-gray-300 border border-gray-300 rounded-md shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:w-auto sm:text-sm"
                   onClick={() => setOpen(false)}
                   ref={cancelButtonRef}
                 >

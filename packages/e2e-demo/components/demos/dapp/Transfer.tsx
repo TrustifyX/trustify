@@ -45,7 +45,7 @@ const Transfer: FC<TransferProps> = ({
       }}
     >
       <div className="flex flex-col px-8 py-4 space-y-6">
-        <h3 className="text-lg font-medium leading-6 text-gray-900">
+        <h3 className="text-lg font-medium leading-6 text-gray-200">
           Transfer
         </h3>
         <div>
@@ -90,7 +90,7 @@ const Transfer: FC<TransferProps> = ({
           loading={isLoading}
           type="submit"
           style="dot-loader"
-          className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-cyan-400 border border-transparent rounded-md shadow-sm hover:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
         >
           <PaperAirplaneIcon
             className={classNames(

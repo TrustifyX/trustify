@@ -55,9 +55,9 @@ const AdminPage: NextPage<Props> = ({ lastIssuedUserId, users }) => {
           {users.map((user) => (
             <div key={user.email}>
               <Link href={`/demos/revocation/users/${user.id}`} passHref>
-                <a className="flex justify-between py-4 !no-underline cursor-pointer hover:bg-gray-50">
+                <a className="flex justify-between py-4 !no-underline cursor-pointer hover:bg-gray-900">
                   <div className="ml-3">
-                    <span className="text-sm text-gray-900">
+                    <span className="text-sm text-gray-200">
                       {user.email}
                       {user.id === lastIssuedUserId && (
                         <span className="ml-4 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
@@ -67,7 +67,7 @@ const AdminPage: NextPage<Props> = ({ lastIssuedUserId, users }) => {
                     </span>
                   </div>
                   <ChevronRightIcon
-                    className="w-5 h-5 text-gray-400"
+                    className="w-5 h-5 text-gray-200"
                     aria-hidden="true"
                   />
                 </a>

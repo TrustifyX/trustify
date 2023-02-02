@@ -77,7 +77,7 @@ const CreditScorePage: NextPage<Props> = ({
           <Link href="/demos/verifier/" passHref>
             <button
               type="button"
-              className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-cyan-400 border border-transparent rounded-md shadow-sm hover:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
               Next: Verification
               <ArrowCircleRightIcon
@@ -104,8 +104,8 @@ const CreditScorePage: NextPage<Props> = ({
           credit score:
         </p>
         <dl className="flex flex-row justify-center mx-auto space-x-2 sm:space-x-5">
-          <div className="px-4 py-3 overflow-hidden text-center bg-white rounded-lg shadow sm:py-2 sm:px-4 flex-0">
-            <dt className="mt-1 text-3xl font-semibold text-gray-900">
+          <div className="px-4 py-3 overflow-hidden text-center bg-gray-300 rounded-lg shadow sm:py-2 sm:px-4 flex-0">
+            <dt className="mt-1 text-3xl font-semibold text-gray-200">
               {user.creditScore}
             </dt>
             <dd>Experian</dd>

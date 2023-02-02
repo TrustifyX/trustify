@@ -49,17 +49,17 @@ const DemosIndex: FC = () => {
         {DEMOS.map((demo) => (
           <li key={demo.href}>
             <Link href={demo.href}>
-              <a className="flex items-center justify-between p-4 space-x-4 hover:bg-gray-50">
+              <a className="flex items-center justify-between p-4 space-x-4 hover:bg-gray-900">
                 <span className="flex flex-col">
-                  <span className="text-sm font-medium text-gray-900">
+                  <span className="text-sm font-medium text-gray-200">
                     {demo.title}
                   </span>
-                  <span className="text-sm text-gray-500">
+                  <span className="text-sm text-gray-200">
                     {demo.description}
                   </span>
                 </span>
                 <ChevronRightIcon
-                  className="w-5 h-5 text-gray-400"
+                  className="w-5 h-5 text-gray-200"
                   aria-hidden="true"
                 />
               </a>

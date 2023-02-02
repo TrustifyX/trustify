@@ -51,34 +51,34 @@ const Layout: FC<Props> = ({ children, title, bgColor }) => {
         <div className="max-w-3xl mx-auto">
           <header className="flex flex-col items-center justify-between p-4 pt-8 space-y-4 sm:p-8 sm:flex-row sm:space-y-0">
             <Link href="/">
-              <a className="max-w-[150px] text-2xl tracking-tight text-center text-gray-900 hover:text-blue-500">
+              <a className="max-w-[150px] text-2xl tracking-tight text-center text-gray-200 hover:text-blue-500">
                 <TrustifyLogo />
               </a>
             </Link>
 
             <div className="flex items-center justify-between space-x-4">
               <Link href="/demos/">
-                <a className="px-3 py-2 text-sm font-medium text-gray-900 rounded-md hover:bg-blue-500 hover:text-white">
+                <a className="px-3 py-2 text-sm font-medium text-gray-200 rounded-md hover:bg-amber-300 hover:text-white">
                   Demos
                 </a>
               </Link>
               <a
                 href={process.env.NEXT_PUBLIC_DOCS_URL}
-                className="px-3 py-2 text-sm font-medium text-gray-900 rounded-md hover:bg-blue-500 hover:text-white"
+                className="px-3 py-2 text-sm font-medium text-gray-200 rounded-md hover:bg-amber-300 hover:text-white"
               >
                 Documentation
               </a>
             </div>
           </header>
-          <main className="max-w-4xl p-4 mx-auto bg-white sm:p-8 rounded-xl">
+          <main className="max-w-4xl p-4 mx-auto bg-gray-300 sm:p-8 rounded-xl">
             {title && (
-              <h1 className="pb-4 mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              <h1 className="pb-4 mt-2 text-3xl font-bold tracking-tight text-gray-200 sm:text-4xl">
                 {title}
               </h1>
             )}
             {children}
           </main>
-          <footer className="py-8 text-sm text-center text-gray-500 text-extralight">
+          <footer className="py-8 text-sm text-center text-gray-200 text-extralight">
             &copy;{new Date().getFullYear()} Centre | Software open sourced
             under the MIT license
           </footer>
