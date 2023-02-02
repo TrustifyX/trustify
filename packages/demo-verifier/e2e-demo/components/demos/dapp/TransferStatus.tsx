@@ -16,7 +16,7 @@ const TransferStatus: FC<TransferStatusProps> = ({
 }) => {
   return (
     <div>
-      <h3 className="text-lg font-medium leading-6 text-gray-900">
+      <h3 className="text-lg font-medium leading-6 text-gray-200">
         Present KYC Verifiable Credential
       </h3>
       {verification ? (

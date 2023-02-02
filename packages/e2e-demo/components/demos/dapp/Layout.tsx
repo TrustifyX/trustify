@@ -26,7 +26,7 @@ const DappLayout: FC<Props> = ({ children, balance, symbol }) => {
             className="flex justify-center -mb-px space-x-8"
             aria-label="Tabs"
           >
-            <span className="px-1 py-4 text-sm font-medium text-gray-500 whitespace-nowrap ">
+            <span className="px-1 py-4 text-sm font-medium text-gray-200 whitespace-nowrap ">
               Balance:
               <span className="ml-3 text-lg font-bold">
                 {balance.toString()} {symbol}
@@ -35,12 +35,12 @@ const DappLayout: FC<Props> = ({ children, balance, symbol }) => {
           </nav>
 
           <div className="flex justify-between -mb-px space-x-8">
-            <span className="flex items-center px-1 py-4 text-sm font-medium text-gray-500 whitespace-nowrap">
+            <span className="flex items-center px-1 py-4 text-sm font-medium text-gray-200 whitespace-nowrap">
               {formatEthAddress(account)}
             </span>
             <button
               onClick={() => deactivate()}
-              className="px-1 py-4 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:text-gray-700 hover:border-gray-300 whitespace-nowrap"
+              className="px-1 py-4 text-sm font-medium text-gray-200 border-b-2 border-transparent hover:text-gray-700 hover:border-gray-300 whitespace-nowrap"
             >
               Disconnect
             </button>

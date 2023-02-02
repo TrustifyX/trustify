@@ -26,26 +26,26 @@ export default function HistoryItem({ item }: Props): JSX.Element {
 
   return (
     <>
-      <tr className="bg-white">
-        <td className="px-6 py-4 text-sm text-right text-gray-500 whitespace-nowrap">
+      <tr className="bg-gray-300">
+        <td className="px-6 py-4 text-sm text-right text-gray-200 whitespace-nowrap">
           {formatDistanceToNow(new Date(item.createdAt), { addSuffix: true })}
         </td>
 
-        <td className="w-full px-6 py-4 text-sm text-gray-900 max-w-0 whitespace-nowrap">
+        <td className="w-full px-6 py-4 text-sm text-gray-200 max-w-0 whitespace-nowrap">
           <div className="flex">
             <span className="inline-flex space-x-2 text-sm truncate group">
               <CashIcon
-                className="flex-shrink-0 w-5 h-5 text-gray-400 group-hover:text-gray-500"
+                className="flex-shrink-0 w-5 h-5 text-gray-200 group-hover:text-gray-200"
                 aria-hidden="true"
               />
-              <p className="text-gray-500 truncate group-hover:text-gray-900">
+              <p className="text-gray-200 truncate group-hover:text-gray-200">
                 {description}
               </p>
             </span>
           </div>
         </td>
-        <td className="px-6 py-4 text-sm text-right text-gray-500 whitespace-nowrap">
-          <span className="font-medium text-gray-900">{amount} </span>
+        <td className="px-6 py-4 text-sm text-right text-gray-200 whitespace-nowrap">
+          <span className="font-medium text-gray-200">{amount} </span>
           VUSDC
         </td>
       </tr>

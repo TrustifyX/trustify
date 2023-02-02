@@ -44,7 +44,7 @@ const Layout: FC = () => {
           className="flex justify-center -mb-px space-x-8 sm:w-1/3"
           aria-label="Tabs"
         >
-          <span className="px-1 py-4 text-sm font-medium text-gray-500 whitespace-nowrap ">
+          <span className="px-1 py-4 text-sm font-medium text-gray-200 whitespace-nowrap ">
             {data ? (
               <>
                 Balance:
@@ -64,12 +64,12 @@ const Layout: FC = () => {
         ) : null}
         {session ? (
           <div className="flex justify-end -mb-px space-x-8 sm:w-1/3">
-            <span className="flex items-center px-1 py-4 text-sm font-medium text-gray-500 whitespace-nowrap">
+            <span className="flex items-center px-1 py-4 text-sm font-medium text-gray-200 whitespace-nowrap">
               {session?.user?.email}
             </span>
             <button
               onClick={() => signOut()}
-              className="px-1 py-4 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:text-gray-700 hover:border-gray-300 whitespace-nowrap"
+              className="px-1 py-4 text-sm font-medium text-gray-200 border-b-2 border-transparent hover:text-gray-700 hover:border-gray-300 whitespace-nowrap"
             >
               Sign Out
             </button>

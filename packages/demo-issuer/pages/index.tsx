@@ -126,9 +126,9 @@ export default function Home({
   const Scan = ({ challenge }) => {
     return (
       <>
-        <div className="bg-white shadow sm:rounded-lg">
+        <div className="bg-gray-300 shadow sm:rounded-lg">
           <div className="px-4 py-5 sm:p-6">
-            <h3 className="mb-4 text-lg font-medium leading-6 text-gray-900">
+            <h3 className="mb-4 text-lg font-medium leading-6 text-gray-200">
               Scan this QR Code with your mobile wallet
             </h3>
             <div className="prose">
@@ -164,12 +164,12 @@ export default function Home({
 
     return (
       <>
-        <div className="bg-white shadow sm:rounded-lg">
+        <div className="bg-gray-300 shadow sm:rounded-lg">
           <div className="px-4 py-5 sm:p-6">
-            <h3 className="text-lg font-medium leading-6 text-gray-900">
+            <h3 className="text-lg font-medium leading-6 text-gray-200">
               {title}
             </h3>
-            <div className="max-w-xl mt-2 text-sm text-gray-500">
+            <div className="max-w-xl mt-2 text-sm text-gray-200">
               <p>{description}</p>
             </div>
             <div className="mt-5">

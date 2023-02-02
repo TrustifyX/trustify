@@ -50,7 +50,7 @@ const RequirePassword: FC<Props> = ({ children, passwordSuccessful }) => {
               <div className="relative mt-1 rounded-md shadow-sm">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                   <LockClosedIcon
-                    className="w-5 h-5 text-gray-400"
+                    className="w-5 h-5 text-gray-200"
                     aria-hidden="true"
                   />
                 </div>
@@ -65,7 +65,7 @@ const RequirePassword: FC<Props> = ({ children, passwordSuccessful }) => {
               </div>
               <button
                 type="submit"
-                className="inline-flex items-center justify-center w-full px-4 py-2 my-2 text-sm font-medium text-center text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                className="inline-flex items-center justify-center w-full px-4 py-2 my-2 text-sm font-medium text-center text-white bg-cyan-400 border border-transparent rounded-md shadow-sm hover:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                 onClick={onSubmit}
               >
                 Login
