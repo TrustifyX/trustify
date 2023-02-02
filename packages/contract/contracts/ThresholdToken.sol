@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.9;
+pragma solidity ^0.8.17;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "./VerificationRegistry.sol";
@@ -14,6 +14,17 @@ contract ThresholdToken is ERC20, VerificationRegistry {
         _mint(msg.sender, initialSupply);
     }
 
+    /**
+     * @dev This hook executes as part of the ERC20 transfer implementation. In this
+     * example, it ensures that the amount transferred is either below a demo
+     * threshold, or that the caller has been verified. If those conditions are
+     * not met, then the error will cause the demo Dapp to start verification and
+     * will subsequently call validateAndTransfer, using the subject-submitted
+     * VerificationResult path.
+     *
+     * See PermissionedToken.sol for an alternative to this example that uses
+     * verfier-submitted results and delegation rather than inheritance.
+     */
     function _beforeTokenTransfer(
         address from,
         address to,
@@ -21,23 +32,15 @@ contract ThresholdToken is ERC20, VerificationRegistry {
     ) internal virtual override {
         super._beforeTokenTransfer(from, to, amount);
         if (owner() != msg.sender) {
-            bool isSenderVerified = this.isVerified(from);
             require(
-                isSenderVerified || amount < _credentialThreshold,
+                amount < _credentialThreshold || this.isVerified(from),
                 "ThresholdToken: Transfers of this amount require sender verification"
             );
-            // for the sake of demonstration, we're removing verifications
-            // and requiring them again for new transfers
-            if (isSenderVerified) {
-                this.removeVerification(
-                    this.getVerificationsForSubject(msg.sender)[0].uuid
-                );
-            }
         }
     }
 
     /**
-     * A function to confirm a credential and transact in the same transaction.
+     * @dev A function to confirm a credential and transact in the same transaction.
      */
     function validateAndTransfer(
         address to,
@@ -45,12 +48,14 @@ contract ThresholdToken is ERC20, VerificationRegistry {
         VerificationResult memory verificationResult,
         bytes memory signature
     ) public {
-        registerVerificationBySubject(verificationResult, signature);
+        if (!this.isVerified(msg.sender)) {
+            _registerVerificationBySubject(verificationResult, signature);
+        }
         super.transfer(to, amount);
     }
 
     /**
-     * Convenience method to return the threshold over which verification
+     * @dev Convenience methods to get/set the threshold over which verification
      * is required. This is an overly-simplified example, in the real world
      * more sophisticated logic would likely trigger verification.
      */
