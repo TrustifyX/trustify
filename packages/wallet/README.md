@@ -1,1 +1,0 @@
-# Trustify Wallet
