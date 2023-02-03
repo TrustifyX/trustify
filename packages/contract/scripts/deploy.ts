@@ -1,31 +1,11 @@
-// This is a script for deploying your contracts. You can adapt it to deploy
-// yours, or create new ones.
-
-// We require the Hardhat Runtime Environment explicitly here. This is optional
-// but useful for running the script in a standalone fashion through `node <script>`.
-//
-// When running the script with `npx hardhat run <script>` you'll find the Hardhat
-// Runtime Environment's members available in the global scope.
 import { Contract, ContractFactory } from "ethers";
-import * as hre from "hardhat";
+const { ethers } = require("hardhat");
+require("hardhat-deploy")
+require("hardhat-deploy-ethers")
 
 async function main() {
-  if (hre.network.name === "hardhat") {
-    console.warn(
-      "You are trying to deploy a contract to the Hardhat Network, which" +
-        "gets automatically created and destroyed every time. Use the Hardhat" +
-        " option '--network localhost'"
-    );
-  }
 
-  // Hardhat always runs the compile task when running scripts with its command
-  // line interface.
-  //
-  // If this script is run directly using `node` you may want to call compile
-  // manually to make sure everything is compiled
-  // await hre.run('compile');
-
-  const [deployer] = await hre.ethers.getSigners();
+  const [deployer] = await ethers.getSigners();
   console.log(
     "Deploying the contracts with the account:",
     await deployer.getAddress()
@@ -34,7 +14,7 @@ async function main() {
   console.log("Account balance:", (await deployer.getBalance()).toString());
 
   // deploy VerificationRegistry
-  const registryFactory: ContractFactory = await hre.ethers.getContractFactory(
+  const registryFactory: ContractFactory = await ethers.getContractFactory(
     "VerificationRegistry"
   );
   const registryContract: Contract = await registryFactory.deploy();
@@ -42,7 +22,7 @@ async function main() {
   console.log("Registry address:", registryContract.address);
 
   // deploy PermissionedToken
-  const pTokenFactory: ContractFactory = await hre.ethers.getContractFactory(
+  const pTokenFactory: ContractFactory = await ethers.getContractFactory(
     "PermissionedToken"
   );
   const permissionedToken: Contract = await pTokenFactory.deploy(
@@ -60,7 +40,7 @@ async function main() {
   await setRegistryTx.wait();
 
   // deploy ThresholdToken
-  const tTokenFactory: ContractFactory = await hre.ethers.getContractFactory(
+  const tTokenFactory: ContractFactory = await ethers.getContractFactory(
     "ThresholdToken"
   );
   const thresholdToken: Contract = await tTokenFactory.deploy("100000000000");
@@ -94,14 +74,14 @@ async function main() {
   await registerVerifications(registryContract, addresses);
 
   // save the contract's artifacts and address in the frontend directory
-  saveFrontendFiles(registryContract, permissionedToken, thresholdToken);
+  // saveFrontendFiles(registryContract, permissionedToken, thresholdToken);
 }
 
 async function registerVerifications(registry: Contract, addresses: string[]) {
   const domain = {
     name: "VerificationRegistry",
     version: "1.0",
-    chainId: hre.network.config.chainId ?? 1337,
+    chainId: 3141,
     verifyingContract: registry.address,
   };
 
@@ -124,7 +104,7 @@ async function registerVerifications(registry: Contract, addresses: string[]) {
     };
 
     // sign the structured result
-    const [deployer] = await hre.ethers.getSigners();
+    const [deployer] = await ethers.getSigners();
 
     const signature = await deployer._signTypedData(
       domain,
@@ -151,9 +131,9 @@ async function createTrustedVerifier(
 ) {
   for (const address of verifiers) {
     const testVerifierInfo = {
-      name: hre.ethers.utils.formatBytes32String("Centre Consortium"),
-      did: "did:web:centre.io",
-      url: "https://centre.io/about",
+      name: ethers.utils.formatBytes32String("Trustify"),
+      did: "did:web:trustify.io",
+      url: "https://trustify.io",
       signer: address,
     };
 
@@ -179,7 +159,7 @@ function saveFrontendFiles(
   thresholdToken
 ) {
   const fs = require("fs");
-  const contractsDir = __dirname + "/../../e2e-demo/contracts";
+  const contractsDir = __dirname + "../demo";
 
   if (!fs.existsSync(contractsDir)) {
     fs.mkdirSync(contractsDir);
@@ -206,7 +186,7 @@ function saveFrontendFiles(
     )
   );
   const permissionedTokenArtifact =
-    hre.artifacts.readArtifactSync("PermissionedToken");
+    artifacts.readArtifactSync("PermissionedToken");
   fs.writeFileSync(
     contractsDir + "/PermissionedToken.json",
     JSON.stringify(permissionedTokenArtifact, null, 2)
@@ -217,7 +197,7 @@ function saveFrontendFiles(
     JSON.stringify({ ThresholdToken: thresholdToken.address }, undefined, 2)
   );
   const thresholdTokenArtifact =
-    hre.artifacts.readArtifactSync("ThresholdToken");
+    artifacts.readArtifactSync("ThresholdToken");
   fs.writeFileSync(
     contractsDir + "/ThresholdToken.json",
     JSON.stringify(thresholdTokenArtifact, null, 2)
