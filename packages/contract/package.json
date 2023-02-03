@@ -1,13 +1,17 @@
 {
-  "name": "contract",
+  "name": "trustify-contracts",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "hardhat:node": "npx hardhat node --hostname 127.0.0.1",
-    "hardhat:deploy": "npx hardhat run scripts/deploy.ts --network localhost",
-    "hardhat:faucet": "npx hardhat --network localhost faucet",
-    "hardhat:test": "npx hardhat test --network localhost"
+    "compile": "hardhat compile",
+    "test": "hardhat test test/unit/*_test.js --network hardhat",
+    "test-staging": "hardhat test test/staging/*_test.js --network goerli",
+    "lint": "solhint 'contracts/*.sol'",
+    "lint:fix": "solhint 'contracts/**/*.sol' --fix",
+    "format": "prettier --write .",
+    "coverage": "hardhat coverage --solcoverjs ./.solcover.js",
+    "fuzzing": "docker run -it --rm -v $PWD:/src trailofbits/eth-security-toolbox"
   },
   "author": "",
   "license": "ISC",
@@ -21,9 +25,12 @@
     "dotenv": "^16.0.3",
     "ethers": "^5.7.2",
     "hardhat": "^2.12.6",
+    "hardhat-deploy": "^0.11.23",
+    "hardhat-deploy-ethers": "^0.3.0-beta.13",
     "typescript": "^4.9.5"
   },
   "dependencies": {
+    "@glif/filecoin-address": "^2.0.20",
     "@openzeppelin/contracts": "^4.8.1"
   }
 }

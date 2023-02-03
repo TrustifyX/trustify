@@ -1,6 +1,5 @@
 const fa = require("@glif/filecoin-address");
-import dotenv from "dotenv"
-dotenv.config()
+require("dotenv").config()
 
 task("get-address", "Gets Filecoin f4 address and corresponding Ethereum address.")
   .setAction(async (taskArgs) => {
