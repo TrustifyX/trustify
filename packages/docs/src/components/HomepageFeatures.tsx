@@ -44,8 +44,8 @@ function Feature({ Svg, title, description }) {
         <Svg className={styles.featureSvg} alt={title} />
       </div>
       <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
-        <p>{description}</p>
+        <h3 className="text-gray-200">{title}</h3>
+        <p className="text-gray-200">{description}</p>
       </div>
     </div>
   );

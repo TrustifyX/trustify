@@ -21,7 +21,7 @@ export default function PendingSendPanel({
           You are trying to send someone VUSDC
         </h3>
         <div className="max-w-xl mt-2 text-sm text-gray-200">
-          <p>
+          <p className="text-gray-200">
             You have an outstanding request to send {amount} VUSDC to {address}.
             Before it can be broadcast to the network, the counterparty must
             provide beneficiary information.

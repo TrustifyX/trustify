@@ -38,7 +38,7 @@ export default function PickupPanel({
           Someone is trying to send you VUSDC
         </h3>
         <div className="max-w-xl mt-2 text-sm text-gray-200">
-          <p>
+          <p className="text-gray-200">
             Someone has sent you {amount} VUSDC. Before it can be picked up, we
             must provide beneficiary information to the counterparty.
           </p>

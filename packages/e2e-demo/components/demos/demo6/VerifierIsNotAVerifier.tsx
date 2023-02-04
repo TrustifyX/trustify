@@ -11,12 +11,12 @@ const VerifierIsNotAVerifier: FC<NoTokensMessageProps> = ({
 }) => {
   return (
     <div className="prose">
-      <p>
+      <p className="text-gray-200">
         The verifier in this demo is configured using the environment variable
         VERIFIER_PRIVATE_KEY. It appears that address has not been configured as
         a verifier with the registry contract.
       </p>
-      <p>
+      <p className="text-gray-200">
         From `packages/contract` directory, you can correct it by running the
         following command:
       </p>
@@ -30,7 +30,7 @@ const VerifierIsNotAVerifier: FC<NoTokensMessageProps> = ({
         {"  "}--network localhost
       </pre>
 
-      <p>
+      <p className="text-gray-200">
         The UI should automatically update after the transaction is mined. If
         not, try reloading.
       </p>

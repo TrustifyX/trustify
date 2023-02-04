@@ -54,8 +54,8 @@ const CeFiPage: NextPage = () => {
   return (
     <Layout hideNavigation={true}>
       <div className="pb-2 prose max-w-none">
-        <h2>Centralized App with Travel Rule</h2>
-        <p>
+        <h2 className="text-gray-200">Centralized App with Travel Rule</h2>
+        <p className="text-gray-200">
           In this demo, we have assigned our test users to two different
           institutions: Trapezoid and Coinboss. To experience the end-to-end
           demo, you will want to open the demo in two different browser windows.

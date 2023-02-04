@@ -93,8 +93,8 @@ function CredentialTable({
     <table>
       <thead>
         <tr>
-          <th>Type</th>
-          <th>Issued</th>
+          <th className="text-gray-200">Type</th>
+          <th className="text-gray-200">Issued</th>
           <th>
             <span className="sr-only">Revoke</span>
           </th>
@@ -149,22 +149,22 @@ const AdminUserPage: NextPage<Props> = ({ credentialList, user }) => {
   return (
     <RevocationLayout>
       <div className="prose">
-        <h2>Issuer Review: {user.email}</h2>
-        <p>
+        <h2 className="text-gray-200">Issuer Review: {user.email}</h2>
+        <p className="text-gray-200">
           When revoking a credential, the best practice is to revoke all of a
           user&apos;s credentials of the same type. This ensures that no
           previously issued credentials can still be used.
         </p>
-        <p>
+        <p className="text-gray-200">
           In this demo, KYC/AML credentials can be revoked, but Credit Score
           cannot &mdash; it simply expires relatively quickly, as a snapshot in
           time. Not all credentials must be revocable.
         </p>
 
-        <h2>Active Credentials</h2>
+        <h2 className="text-gray-200">Active Credentials</h2>
         <CredentialTable credentials={activeCredentials} />
 
-        <h2>Revoked Credentials</h2>
+        <h2 className="text-gray-200">Revoked Credentials</h2>
         <CredentialTable credentials={revokedCredentials} />
 
         <Link href="/demos/revocation" passHref>

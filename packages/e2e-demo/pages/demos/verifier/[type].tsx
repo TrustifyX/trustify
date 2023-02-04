@@ -49,7 +49,7 @@ const VerifierPage: NextPage<Props> = ({ verification }) => {
       <div className="prose max-w-none">
         {status === "approved" ? (
           <>
-            <h3>
+            <h3 className="text-gray-200">
               The Presentation Exchange completed and the credential was
               verified.
             </h3>
@@ -58,7 +58,7 @@ const VerifierPage: NextPage<Props> = ({ verification }) => {
 
             {result && (
               <>
-                <p>
+                <p className="text-gray-200">
                   The verifier signed and returned the following verification
                   result, which can be used by a relying party such as a smart
                   contract that can validate the result.
@@ -67,7 +67,7 @@ const VerifierPage: NextPage<Props> = ({ verification }) => {
               </>
             )}
 
-            <p>
+            <p className="text-gray-200">
               <Link href="/demos/revocation" passHref>
                 <button
                   type="button"
@@ -84,9 +84,9 @@ const VerifierPage: NextPage<Props> = ({ verification }) => {
           </>
         ) : status === "rejected" ? (
           <>
-            <h3>Your credential was not verified.</h3>
+            <h3 className="text-gray-200">Your credential was not verified.</h3>
             <XCircleIcon className="mx-auto text-red-400 w-36 h-36" />
-            <p>
+            <p className="text-gray-200">
               <Link href="/demos/revocation" passHref>
                 <button
                   type="button"
@@ -103,8 +103,8 @@ const VerifierPage: NextPage<Props> = ({ verification }) => {
           </>
         ) : (
           <>
-            <h2>{title} Verification User Experience</h2>
-            <p>
+            <h2 className="text-gray-200">{title} Verification User Experience</h2>
+            <p className="text-gray-200">
               Using the Trustify demo wallet app, scan this QR code to begin the
               verification sequence:
             </p>
@@ -112,18 +112,18 @@ const VerifierPage: NextPage<Props> = ({ verification }) => {
               value={JSON.stringify(qrCodeData)}
               className="w-48 h-48 mx-auto"
             />
-            <h2>Behind the Scenes</h2>
-            <p>
+            <h2 className="text-gray-200">Behind the Scenes</h2>
+            <p className="text-gray-200">
               The QR code informs the wallet where to retrieve a{" "}
               <Link href="https://identity.foundation/presentation-exchange/#presentation-request">
-                <a target="_blank">Presentation Request</a>
+                <a target="_blank"  className="text-gray-200">Presentation Request</a>
               </Link>
               . The QR code contains the following data:
             </p>
             <pre>{JSON.stringify(qrCodeData, null, 4)}</pre>
-            <h2>Verification Presentation Request</h2>
-            <p>
-              After following the url in <code>challengeTokenUrl</code>, the
+            <h2 className="text-gray-200">Verification Presentation Request</h2>
+            <p className="text-gray-200">
+              After following the url in <code className="text-gray-200">challengeTokenUrl</code>, the
               wallet receives a complete Presentation Request, which instructs
               the wallet where and how to make the request to verify the
               credential.
@@ -131,7 +131,7 @@ const VerifierPage: NextPage<Props> = ({ verification }) => {
 
             <Disclosure>
               <Disclosure.Button>
-                <p className="font-semibold underline text-md">
+                <p className="font-semibold underline text-md text-gray-200">
                   Show/Hide the Complete Presentation Request
                 </p>
               </Disclosure.Button>
@@ -140,11 +140,11 @@ const VerifierPage: NextPage<Props> = ({ verification }) => {
               </Disclosure.Panel>
             </Disclosure>
 
-            <p>
+            <p className="text-gray-200">
               Once the client has the Presentation Request, it wraps the
               relevant Verifiable Crdential inside a{" "}
               <Link href="https://www.w3.org/TR/vc-data-model/#presentations-0">
-                <a target="_blank">Verifiable Presentation</a>
+                <a target="_blank" className="text-gray-200">Verifiable Presentation</a>
               </Link>{" "}
               (preventing relay attacks). It then signs the Verifiable
               Presentation using its DID key and transmits it to the verifier.

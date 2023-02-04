@@ -28,21 +28,21 @@ const VerifierPage: NextPage = () => {
     <VerifierLayout>
       <div className="pb-2 prose max-w-none text-gray-200">
         <h2 className="text-gray-200">Verify an Identity&apos;s Credentials</h2>
-        <p>
+        <p className="text-gray-200">
           Smart contracts, financial insitutions, agencies, apps, and devices
           can verify credentials by implementing support for the{" "}
           <Link href="https://identity.foundation/presentation-exchange/">
-            <a target="_blank">Presentation Exchange</a>
+            <a target="_blank" className="text-gray-200">Presentation Exchange</a>
           </Link>{" "}
           specification.
         </p>
-        <p>
+        <p className="text-gray-200">
           This reference implemenation demonstrates how verifiers request
           credentials, how holders format, sign, and transmit credentials in
           response, and how information is secured and conveyed in verification
           user experiences.
         </p>
-        <p>
+        <p className="text-gray-200">
           Note there is no user authentication required for verification. A
           verifier does not require any knowledge of an end-user other than the
           provided credentials to verify.

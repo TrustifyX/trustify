@@ -17,12 +17,12 @@ const VerifierFaucet: FC<NoTokensMessageProps> = ({
 
   return (
     <div className="prose">
-      <p>
+      <p className="text-gray-200">
         In this demo, the verifier will submit the verification record to the
         verification registry. This transaction requires ETH to complete. You
         can seed the verifier by clicking the button below:
       </p>
-      <p>
+      <p className="text-gray-200">
         <LoadingButton
           className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-cyan-400 border border-transparent rounded-md shadow-sm hover:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           loading={loading}
@@ -50,10 +50,10 @@ const VerifierFaucet: FC<NoTokensMessageProps> = ({
         </LoadingButton>
       </p>
 
-      <p>Alternatively, you can run the following command:</p>
+      <p className="text-gray-200">Alternatively, you can run the following command:</p>
       <pre>npm run hardhat:faucet {selectedAddress}</pre>
 
-      <p>
+      <p className="text-gray-200">
         The UI will update within 30 seconds after you request tokens, once the
         result is mined.
       </p>

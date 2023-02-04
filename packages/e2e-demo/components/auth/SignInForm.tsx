@@ -32,7 +32,7 @@ const SignInForm: FC<Props> = ({ redirectTo }) => {
 
   return (
     <div className="max-w-sm p-6 mx-auto mt-6 space-y-6 border-2 rounded-md">
-      <span className="px-2 text-lg text-gray-800">Log in as:</span>
+      <span className="px-2 text-lg text-gray-200">Log in as:</span>
       <div className="grid gap-4 sm:grid-cols-2">
         {sampleUsers.map((sampleUser) => (
           <LoadingButton
@@ -41,7 +41,7 @@ const SignInForm: FC<Props> = ({ redirectTo }) => {
             onClick={() => {
               signInAs(sampleUser)
             }}
-            className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-200 bg-gray-300 border border-gray-300 rounded-md shadow-sm hover:bg-gray-900"
+            className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-200 bg-gray-800 border border-gray-300 rounded-md shadow-sm hover:bg-gray-900"
           >
             {sampleUser.email}
           </LoadingButton>

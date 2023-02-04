@@ -81,8 +81,8 @@ const AdminCredentialPage: NextPage<Props> = ({
   return (
     <RevocationLayout>
       <div className="prose max-w-none">
-        <h2>{formatType(credential)}</h2>
-        <p>
+        <h2 className="text-gray-200">{formatType(credential)}</h2>
+        <p className="text-gray-200">
           An issuer can reconcile this credential to a specific user in its
           system because the issuer persists that mapping internally whenever it
           issues a revocable credential. No one other than the issuer could map
@@ -91,15 +91,15 @@ const AdminCredentialPage: NextPage<Props> = ({
         </p>
         {revocable && (
           <>
-            <p>
+            <p className="text-gray-200">
               Credentials themselves are immutable, it is their corresponding
               revocation lists that update (specifically, the{" "}
-              <code>encodedList</code> property in the revocation list
+              <code className="text-gray-200">encodedList</code> property in the revocation list
               credential will change). A single revocation list can accomodate
               thousands of credentials, allowing verifiers to query them without
               leaking which specific credential is being queried.
             </p>
-            <p>
+            <p className="text-gray-200">
               <RevokeButton
                 credential={credential}
                 defaultRevoked={revoked}
@@ -120,7 +120,7 @@ const AdminCredentialPage: NextPage<Props> = ({
 
         {revocable && (
           <>
-            <h3>Revocation List Credential:</h3>
+            <h3 className="text-gray-200">Revocation List Credential:</h3>
 
             <pre className="overflow-x-scroll">
               {JSON.stringify(list, null, 4)}

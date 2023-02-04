@@ -33,24 +33,24 @@ export const getServerSideProps = requireAuth<Props>(async () => {
 const AdminPage: NextPage<Props> = ({ lastIssuedUserId, users }) => {
   return (
     <RevocationLayout>
-      <div className="prose max-w-none">
-        <h2>Simulating an Issuer&apos;s Compliance Tool</h2>
-        <p>
+      <div className="prose max-w-none text-gray-200">
+        <h2 className="text-gray-200">Simulating an Issuer&apos;s Compliance Tool</h2>
+        <p className="text-gray-200">
           This example simulates an admin tool used by issuers to manage
           credentials. Such a tool might be used by a compliance analyst to
           inspect the details of a user, including all credentials issued to a
           user, and to revoke credentials if needed.
         </p>
 
-        <p>
+        <p className="text-gray-200">
           To protect privacy, Trustify employs{" "}
           <Link href="https://w3c-ccg.github.io/vc-status-list-2021">
-            <a target="_blank">Status List 2021</a>
+            <a target="_blank" className="text-gray-200">Status List 2021</a>
           </Link>{" "}
           to execute credential revocation.
         </p>
 
-        <h2>Users</h2>
+        <h2 className="text-gray-200">Users</h2>
         <div className="divide-y divide-gray-200">
           {users.map((user) => (
             <div key={user.email}>

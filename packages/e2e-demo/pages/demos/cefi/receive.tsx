@@ -118,7 +118,7 @@ const Page: NextPage = () => {
             <p className="text-gray-200 max-w-4xltext-sm">
               You can receive VUSDC at this address:
             </p>
-            <p>{data?.address}</p>
+            <p className="text-gray-200">{data?.address}</p>
 
             <QRCodeSVG value={data?.address} className="w-48 h-48" />
           </div>

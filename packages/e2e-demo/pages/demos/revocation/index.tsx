@@ -29,16 +29,16 @@ const RevocationPage: NextPage = () => {
 
   return (
     <RevocationLayout hideAuth>
-      <div className="pb-2 prose max-w-none">
-        <h2>Simulating an Issuer&apos;s Compliance Tool</h2>
-        <p>
+      <div className="pb-2 prose max-w-none text-gray-200">
+        <h2 className="text-gray-200">Simulating an Issuer&apos;s Compliance Tool</h2>
+        <p className="text-gray-200">
           This example simulates an admin tool used by issuers to manage
           credentials. Such a tool might be used by a compliance analyst to
           inspect the details of a user, including all credentials issued to a
           user, and to revoke credentials if needed.
         </p>
 
-        <p>
+        <p className="text-gray-200">
           In order to use this tool, you must first sign in as a compliance
           officer.
         </p>

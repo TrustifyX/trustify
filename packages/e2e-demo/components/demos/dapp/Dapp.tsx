@@ -395,7 +395,7 @@ const Dapp: FC = () => {
           In this demo, transfers of 10 or more THUSDC will require proof of
           KYC.
         </p>
-        <p>
+        <p className="text-gray-200">
           Other DeFi use cases include credit credentials for lower
           collateralization and improved borrowing terms, accredited investor
           status for access to new markets, proof of geo location for licensed

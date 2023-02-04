@@ -61,7 +61,7 @@ const CreditScorePage: NextPage<Props> = ({
   const content =
     data && data.credential ? (
       <div className="space-y-4">
-        <p>
+        <p className="text-gray-200">
           The issuer created a credential for a{" "}
           <Link href="https://www.w3.org/TR/did-core/">
             <a target="_blank">DID</a>
@@ -73,7 +73,7 @@ const CreditScorePage: NextPage<Props> = ({
           . The issuer signed the Verifiable Credential with its own DID. The
           decoded VC is below.
         </p>
-        <p>
+        <p className="text-gray-200">
           <Link href="/demos/verifier/" passHref>
             <button
               type="button"
@@ -87,7 +87,7 @@ const CreditScorePage: NextPage<Props> = ({
             </button>
           </Link>
         </p>
-        <h3>Decoded KYC Verifiable Credential:</h3>
+        <h3 className="text-gray-200">Decoded KYC Verifiable Credential:</h3>
         <pre>{JSON.stringify(data.credential, null, 4)}</pre>
       </div>
     ) : (
