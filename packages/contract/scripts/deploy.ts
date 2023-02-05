@@ -2,16 +2,19 @@ import { Contract, ContractFactory } from "ethers";
 const { ethers } = require("hardhat");
 require("hardhat-deploy")
 require("hardhat-deploy-ethers")
+require("dotenv").config()
 
 async function main() {
 
-  const [deployer] = await ethers.getSigners();
+  const private_key = process.env.PRIVATE_KEY
+  const wallet = new ethers.Wallet(private_key, ethers.provider)
+  // const [deployer] = await ethers.getSigners();
   console.log(
     "Deploying the contracts with the account:",
-    await deployer.getAddress()
+    await wallet.address
   );
 
-  console.log("Account balance:", (await deployer.getBalance()).toString());
+  console.log("Account balance:", (await wallet.getBalance()).toString());
 
   // deploy VerificationRegistry
   const registryFactory: ContractFactory = await ethers.getContractFactory(
@@ -52,7 +55,7 @@ async function main() {
     // We will include the contract deployer in the set of Verifiers. This will
     // allow us to register verifications, with the assumption that the
     // deployer will have enough gas to complete the transactions.
-    await deployer.getAddress(),
+    await wallet.getAddress(),
     // Verifier, will be used at runtime for demo purposes. We purposely do not
     // seed this account with ETH for gas for the sake of the demo.
     "0x71CB05EE1b1F506fF321Da3dac38f25c0c9ce6E1",
@@ -98,7 +101,7 @@ async function registerVerifications(registry: Contract, addresses: string[]) {
 
   for (const address of addresses) {
     const verificationResult = {
-      schema: "centre.io/credentials/kyc",
+      schema: "trustify.io/credentials/kyc",
       subject: address,
       expiration: expiration,
     };

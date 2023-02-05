@@ -58,7 +58,7 @@ Currently there are 2 main types of contracts:
 Type in the following command in the terminal to deploy all contracts:
 
  ```
-yarn hardhat deploy
+npx hardhat run scripts/deploy.ts --network hyperspace
 ```
 
 This will compile all the contracts in the contracts folder and deploy them to the Hyperspace test network automatically!
