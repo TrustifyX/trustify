@@ -1,4 +1,4 @@
-# Trustify Smart Contract Examples
+# Trustify Smart Contract
 
 These recipes illustrate how smart contracts use results of Verifiable Credential verifications even when the contracts are not technically or economically capable of executing the verifications themselves.
 
