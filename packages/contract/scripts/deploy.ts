@@ -18,16 +18,18 @@ async function main() {
 
   // deploy VerificationRegistry
   const registryFactory: ContractFactory = await ethers.getContractFactory(
-    "VerificationRegistry"
+    "VerificationRegistry", wallet
   );
+  console.log("deploy registryContract")
   const registryContract: Contract = await registryFactory.deploy();
   await registryContract.deployed();
   console.log("Registry address:", registryContract.address);
 
   // deploy PermissionedToken
   const pTokenFactory: ContractFactory = await ethers.getContractFactory(
-    "PermissionedToken"
+    "PermissionedToken", wallet
   );
+  console.log("deploy permissionedToken")
   const permissionedToken: Contract = await pTokenFactory.deploy(
     "Permissioned Token",
     "PUSD",
@@ -44,8 +46,9 @@ async function main() {
 
   // deploy ThresholdToken
   const tTokenFactory: ContractFactory = await ethers.getContractFactory(
-    "ThresholdToken"
+    "ThresholdToken", wallet
   );
+  console.log("deploy ThresholdToken")
   const thresholdToken: Contract = await tTokenFactory.deploy("100000000000");
   await thresholdToken.deployed();
   console.log("Threshold Token address:", thresholdToken.address);
