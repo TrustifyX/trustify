@@ -118,7 +118,7 @@ async function registerVerifications(registry: Contract, addresses: string[]) {
 
   for (const address of addresses) {
     const verificationResult = {
-      schema: "centre.io/credentials/kyc",
+      schema: "trustify.io/credentials/kyc",
       subject: address,
       expiration: expiration,
     };
@@ -151,9 +151,9 @@ async function createTrustedVerifier(
 ) {
   for (const address of verifiers) {
     const testVerifierInfo = {
-      name: hre.ethers.utils.formatBytes32String("Centre Consortium"),
-      did: "did:web:centre.io",
-      url: "https://centre.io/about",
+      name: hre.ethers.utils.formatBytes32String("Trustify Demo"),
+      did: "did:web:trustify.io",
+      url: "https://trustify.io/about",
       signer: address,
     };
 

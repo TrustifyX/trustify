@@ -258,7 +258,7 @@ task(
     };
 
     const verificationResult = {
-      schema: "centre.io/credentials/kyc",
+      schema: "trustify.io/credentials/kyc",
       subject: taskArgs.address,
       expiration: Math.floor(Date.now() / 1000) + 60, // 1 minute
     };
