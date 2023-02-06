@@ -9,10 +9,10 @@ An open, shared, interoperable Verifiable Credential standard to empower DeFi pr
 
 ### Project Structure
 
--[contract](./packages/contract) - two examples ERC20 contracts that implement Trustify's Verifiable Credential standard
--[e2e-demo](./packages/e2e-demo) - demos for different Trustify use cases
--[trustify](./packages/trustify) - the core Javascript SDK for issuance, verification, and revocation of Verifiable Credential
--[wallet](./packages/wallet) - a demo wallet for storing and submitting credentials
+- [contract](./packages/contract) - two examples ERC20 contracts that implement Trustify's Verifiable Credential standard
+- [e2e-demo](./packages/e2e-demo) - demos for different Trustify use cases
+- [trustify](./packages/trustify) - the core Javascript SDK for issuance, verification, and revocation of Verifiable Credential
+- [wallet](./packages/wallet) - a demo wallet for storing and submitting credentials
 
 ### Development Environment Setup
 
