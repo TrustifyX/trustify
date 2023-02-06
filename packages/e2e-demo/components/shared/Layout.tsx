@@ -73,7 +73,7 @@ const Layout: FC<Props> = ({ children, title, bgColor }) => {
             {children}
           </main>
           <footer className="py-8 text-sm text-center text-gray-00 text-extralight">
-            &copy;{new Date().getFullYear()} Centre | Software open sourced
+            &copy;{new Date().getFullYear()} Trustify | Software open sourced
             under the MIT license
           </footer>
         </div>
