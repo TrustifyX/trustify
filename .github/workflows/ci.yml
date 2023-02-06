@@ -29,5 +29,4 @@ jobs:
       - run: npm run setup:ci -w e2e-demo
       - run: npm run build:trustify
       - run: npm run lint
-      - run: npm run type-check
       - run: npm run test

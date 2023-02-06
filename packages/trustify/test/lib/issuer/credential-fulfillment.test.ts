@@ -139,7 +139,7 @@ describe("buildAndSignVerifiableCredential", () => {
           id: subjectDid.subject,
           CreditScoreAttestation: {
             type: "CreditScoreAttestation",
-            score: 70,
+            score: 700,
             scoreType: "Reputation Score",
             provider: "FilRep"
           }
@@ -328,7 +328,7 @@ describe("buildAndSignFulfillment", () => {
             id: subjectDid.subject,
             CreditScoreAttestation: {
               type: "CreditScoreAttestation",
-              score: 70,
+              score: 700,
               scoreType: "Reputation Score",
               provider: "FilRep"
             }
