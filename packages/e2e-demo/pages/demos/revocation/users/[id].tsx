@@ -104,7 +104,7 @@ function CredentialTable({
         {credentials.map((credential, index) => (
           <tr
             key={index}
-            className={index % 2 === 0 ? "bg-gray-800 text-gray-200" : "bg-gray-900 text-gray-200"}
+            className={index % 2 === 0 ? "bg-gray-800 text-gray-200" : "bg-gray-800 text-gray-200"}
           >
             <td>{credential.credential.credential.type[1]}</td>
             <td>

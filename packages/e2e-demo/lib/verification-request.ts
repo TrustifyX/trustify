@@ -55,7 +55,7 @@ export async function createVerificationOffer(
       replyUrl,
       fullURL(`/api/demos/verifier/${id}/callback`),
       [process.env.ISSUER_DID],
-      /* minimumCreditScore: */ 600
+      /* minimumCreditScore: */ 70
     )
   } else {
     throw new NotFoundError()

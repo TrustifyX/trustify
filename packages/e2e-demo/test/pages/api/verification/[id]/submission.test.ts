@@ -146,7 +146,7 @@ describe("POST /verification/[id]/submission", () => {
           message:
             "Credential failed to meet criteria specified by input descriptor CreditScoreCredential",
           details:
-            "Credential did not match constraint: We can only accept credentials where the score value is above 700."
+            "Credential did not match constraint: We can only accept credentials where the score value is above 70."
         }
       ]
     })

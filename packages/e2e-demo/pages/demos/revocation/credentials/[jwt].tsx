@@ -111,7 +111,7 @@ const AdminCredentialPage: NextPage<Props> = ({
 
         {!revocable && (
           <>
-            <h4>
+            <h4 className="text-gray-200">
               This credential is not revocable. Issuer administrators can view
               it, but not revoke it.
             </h4>

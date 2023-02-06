@@ -306,7 +306,9 @@ describe("Submission validator", () => {
       { credentialSchema: CREDIT_SCORE_ATTESTATION_SCHEMA_VC_OBJ }
     )
 
-    const minimumCreditScore = creditScoreAttestationFixture.score + 1
+    // const minimumCreditScore = creditScoreAttestationFixture.score + 1
+    const minimumCreditScore = 70
+
     const fulfillmentVP = await decodeVerifiablePresentation(fulfillment)
     const clientVC = fulfillmentVP.verifiableCredential![0]
 
@@ -380,7 +382,7 @@ describe("Submission validator", () => {
     await expectValidationError(
       submission,
       verificationRequest,
-      "Credential did not match constraint: We can only accept credentials where the score value is above 800."
+      "Credential did not match constraint: We can only accept credentials where the score value is above 70."
     )
   })
 
