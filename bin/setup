@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+echo "Installing dependencies..."
+npm install
+
+echo "Setting up trustify..."
+npm run setup --workspace trustify
+
+# echo "Setting up docs..."
+# npm run setup --workspace docs
+
+echo "Setting up e2e-demos..."
+npm run setup --workspace e2e-demo
