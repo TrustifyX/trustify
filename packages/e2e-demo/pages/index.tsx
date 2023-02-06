@@ -17,7 +17,7 @@ import Layout from "../components/shared/Layout"
  */
 const Home: NextPage = () => {
   return (
-    <Layout title="Decentralized Identity for FVM DeFi and DataDAO">
+    <Layout title="Open-Standard for FEVM Verifiable Credentials">
       <p className="mx-auto mb-8 text-xl text-center text-gray-200 max-w-prose">
         Trustify defines data models, protocol recipes, and open source software
         that links identity proofs to crypto finance experiences
@@ -53,8 +53,7 @@ const Home: NextPage = () => {
             </dt>
             <dd className="mt-2 ml-16 text-base text-gray-200">
               <p className="">
-                Identities are defined by traits called <i>claims</i>. One
-                identity can attest to the authenticity and correctness of
+                One identity can attest to the authenticity and correctness of
                 another identity&apos;s claims by issuing a cryptographic{" "}
                 <a
                   href="https://www.w3.org/TR/vc-data-model/"
@@ -67,9 +66,7 @@ const Home: NextPage = () => {
                 .
               </p>
               <p className="mt-5 italic">
-                For example, a university might issue a Verifiable Credential
-                that cryptographically proves an individual&apos;s graduation
-                claim.
+                For example, Filecoin Plus notaries could submit an off-chain verification result of a client on-chain. They could use traits, such as FilRep’s reputation score, online reachability score, committed sectors proof score, and storage deals score.
               </p>
             </dd>
           </div>
@@ -128,9 +125,7 @@ const Home: NextPage = () => {
                 as its verification protocol.
               </p>
               <p className="mt-5 italic">
-                For example, an employer can verify that a job candidate has
-                graduated from a specific university without accessing age or
-                graduation date, and without contacting the university.
+              For example, a DeFi undercollateralized lending protocol could verify the KYC/AML Attestation for a user without accessing any sensitive information such as social security numbers.
               </p>
             </dd>
           </div>
