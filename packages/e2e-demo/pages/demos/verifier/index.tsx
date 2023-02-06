@@ -7,14 +7,6 @@ import VerifierLayout from "../../../components/demos/verifier/Layout"
 
 const items = [
   {
-    name: "KYC/AML Attestation",
-    description:
-      "Proof that your account has been verified and passed KYC/AML checks",
-    href: "/demos/verifier/kyc",
-    iconColor: "bg-pink-500",
-    icon: UsersIcon
-  },
-  {
     name: "Reputation Score",
     description: "Proof of your current reputation score.",
     href: "/demos/verifier/credit-score",
@@ -27,9 +19,9 @@ const VerifierPage: NextPage = () => {
   return (
     <VerifierLayout>
       <div className="pb-2 prose max-w-none text-gray-200">
-        <h2 className="text-gray-200">Verify an Identity&apos;s Credentials</h2>
+        <h2 className="text-gray-200">Verify a Client&apos;s Credentials</h2>
         <p className="text-gray-200">
-          Smart contracts, financial insitutions, agencies, apps, and devices
+          Smart contracts, notaries, financial insitutions, agencies, apps, and devices
           can verify credentials by implementing support for the{" "}
           <Link href="https://identity.foundation/presentation-exchange/">
             <a target="_blank" className="text-gray-200">Presentation Exchange</a>

@@ -4,7 +4,6 @@ import { FC } from "react"
 import { isActive, classNames } from "../../../lib/react-fns"
 
 const tabs = [
-  { name: "KYC/AML", href: "/demos/verifier/kyc" },
   { name: "Reputation Score", href: "/demos/verifier/credit-score" }
 ]
 
@@ -18,7 +17,7 @@ const AttestationNavigation: FC = () => {
               className={classNames(
                 isActive(tab.href)
                   ? "border-cyan-400 text-cyan-400"
-                  : "border-transparent text-gray-200 hover:text-gray-700 hover:border-gray-300",
+                  : "border-cyan-400 text-cyan-400 hover:text-gray-700 hover:border-gray-300",
                 "whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm"
               )}
             >

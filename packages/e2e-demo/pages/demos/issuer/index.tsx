@@ -27,7 +27,7 @@ const IssuerPage: NextPage = () => {
       <div className="pb-2 prose max-w-none">
         <h2 className="text-gray-200">Request and Custody Verifiable Credentials</h2>
         <p className="text-gray-200">
-          When you sign into your account at Circle, Coinbase, Square, or
+          When you sign into your account at Filecoin Plus, Circle, Coinbase, Square or
           another trusted institution, you might request credentials that prove
           those providers have confirmed your identity, credit/risk score,
           accredited investor status, or other key claims.

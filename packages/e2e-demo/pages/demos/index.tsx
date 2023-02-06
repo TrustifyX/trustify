@@ -12,9 +12,9 @@ const DEMOS = [
       "An end-user requests KYC or Reputation Score credentials from an issuer."
   },
   {
-    title: "Basic Verification",
+    title: "Filecoin Plus Verification",
     href: "/demos/verifier",
-    description: "An end-user submits a credential to a 3rd party verifier."
+    description: "A PoC of how a notary can submit off-chain verification result of a client on-chain."
   },
   {
     title: "Compliance & Basic Revocation",
@@ -33,12 +33,6 @@ const DEMOS = [
     href: "/demos/demo6",
     description:
       "An example of how a lending market Dapp can require KYC verification before depositing assets."
-  },
-  {
-    title: "Filecoin Plus Verification",
-    href: "/demos/demo6",
-    description:
-      "Work in progress for verification of clients and deals"
   }
 ]
 

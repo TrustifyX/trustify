@@ -5,7 +5,7 @@ import AttestationNavigation from "./AttestationNavigation"
 
 const VerifierLayout: FC = ({ children }) => {
   return (
-    <Layout title="Demo: Basic Verification">
+    <Layout title="Demo: Filecoin Plus Verification">
       <AttestationNavigation />
       {children}
     </Layout>

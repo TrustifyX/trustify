@@ -142,7 +142,7 @@ const VerifierPage: NextPage<Props> = ({ verification }) => {
 
             <p className="text-gray-200">
               Once the client has the Presentation Request, it wraps the
-              relevant Verifiable Crdential inside a{" "}
+              relevant Verifiable Credential inside a{" "}
               <Link href="https://www.w3.org/TR/vc-data-model/#presentations-0">
                 <a target="_blank" className="text-gray-200">Verifiable Presentation</a>
               </Link>{" "}
