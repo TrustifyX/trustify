@@ -1,7 +1,7 @@
 import Cors from "cors"
 import { NextApiHandler, NextApiRequest } from "next"
-import { promisify } from "util"
 import { ValidationError, VerificationError } from "trustify"
+import { promisify } from "util"
 
 import { MethodNotAllowedError } from "./errors"
 

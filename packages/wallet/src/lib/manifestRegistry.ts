@@ -1,5 +1,10 @@
 import { last, compact } from "lodash"
-import { asyncMap, CredentialManifest, Verifiable, W3CCredential } from "trustify"
+import {
+  asyncMap,
+  CredentialManifest,
+  Verifiable,
+  W3CCredential
+} from "trustify"
 
 import { CredentialAndManifest } from "../types"
 import {

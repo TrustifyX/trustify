@@ -1,5 +1,5 @@
-import { v4 as uuidv4 } from "uuid"
 import { buildCredentialOffer } from "trustify"
+import { v4 as uuidv4 } from "uuid"
 
 import { apiHandler } from "../../../../../../lib/api-fns"
 import { NotFoundError } from "../../../../../../lib/errors"

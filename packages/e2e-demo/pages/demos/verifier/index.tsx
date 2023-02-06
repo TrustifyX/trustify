@@ -1,4 +1,4 @@
-import { CalculatorIcon, UsersIcon } from "@heroicons/react/outline"
+import { CalculatorIcon } from "@heroicons/react/outline"
 import { ChevronRightIcon } from "@heroicons/react/solid"
 import { NextPage } from "next"
 import Link from "next/link"

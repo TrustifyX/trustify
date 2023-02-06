@@ -1,6 +1,5 @@
 import { BitBuffer } from "bit-buffers"
 import { compact, random, sample } from "lodash"
-import { v4 as uuidv4 } from "uuid"
 import {
   isRevocable,
   MaybeRevocableCredential,
@@ -15,6 +14,7 @@ import {
   EncodedStatusListCredential,
   generateEncodedRevocationList
 } from "trustify"
+import { v4 as uuidv4 } from "uuid"
 
 import { fullURL } from "../utils"
 import { prisma, User, Credential } from "./prisma"

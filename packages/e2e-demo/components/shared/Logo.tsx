@@ -1,8 +1,6 @@
-import { classNames } from "../../lib/react-fns"
-
 import type { FC, SVGProps } from "react"
 
-const TrustifyLogo: FC<SVGProps<SVGSVGElement>> = ({ className, ...props }) => {
+const TrustifyLogo: FC<SVGProps<SVGSVGElement>> = ({ ...props }) => {
   return (
     <>
       {/* <svg
