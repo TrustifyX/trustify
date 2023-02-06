@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+    paths:
+      - packages/contract/**
+      - packages/e2e-demo/**
+      - packages/trustify/**
+      - packages/wallet/**
+
+jobs:
+  lint_and_test:
+    name: "Lint & Test"
+    runs-on: ubuntu-latest
+    env:
+      NODE_ENV: test
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+          cache: "npm"
+      - run: npm run setup
+      - run: npm run setup:ci -w e2e-demo
+      - run: npm run build:trustify
+      - run: npm run lint
+      - run: npm run type-check
+      - run: npm run test
