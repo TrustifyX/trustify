@@ -124,17 +124,17 @@ describe("buildCreditScoreManifest", () => {
           id: "CreditScoreCredential",
           schema:
             "https://trustify.id/definitions/schemas/0.0.1/CreditScoreAttestation",
-          name: "Proof of Credit Score from Issuer Inc.",
+          name: "Proof of Reputation Score from Issuer Inc.",
           description:
-            "Attestation that Issuer Inc. has performed a Credit Score check for this subject",
+            "Attestation that Issuer Inc. has performed a Reputation Score check for this subject",
           display: {
             title: { text: "Issuer Inc. Risk Score" },
             subtitle: {
               path: ["$.CreditScoreAttestation.scoreType"],
-              fallback: "Includes credit score"
+              fallback: "Includes reputation score"
             },
             description: {
-              text: "The Credit Score authority processes credit worthiness analysis, potentially employing a number of internal and external vendor providers."
+              text: "The Reputation Score authority processes credit worthiness analysis, potentially employing a number of internal and external vendor providers."
             },
             properties: [
               {

@@ -31,7 +31,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
 const VerifierPage: NextPage<Props> = ({ verification }) => {
   const { query } = useRouter()
   const { type } = query
-  const title = type === "kyc" ? "KYC/AML" : "Credit Score"
+  const title = type === "kyc" ? "KYC/AML" : "Reputation Score"
   const { qrCodeData, challenge } = verification
 
   const { data } = useSWR(

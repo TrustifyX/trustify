@@ -10,7 +10,7 @@ type Props = {
 
 const tabs = [
   { name: "KYC/AML", href: "/demos/issuer/kyc" },
-  { name: "Credit Score", href: "/demos/issuer/credit-score" }
+  { name: "Reputation Score", href: "/demos/issuer/credit-score" }
 ]
 
 const AttestationNavigation: FC<Props> = ({ hideNavigation }) => {

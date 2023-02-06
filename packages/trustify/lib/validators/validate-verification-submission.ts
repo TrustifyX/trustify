@@ -284,7 +284,7 @@ export async function validateVerificationSubmission(
    * Check the verifiable credentials to ensure they meet the requirements
    * set forward in the verification request. This check will generally ensure
    * the credential is signed by a trusted signer, and meets the minimum
-   * requirements set forth in the request (e.g. minimum credit score).
+   * requirements set forth in the request (e.g. minimum reputation score).
    */
   validateInputDescriptors(credentialMap, definition.input_descriptors)
 }

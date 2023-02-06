@@ -139,9 +139,9 @@ describe("buildAndSignVerifiableCredential", () => {
           id: subjectDid.subject,
           CreditScoreAttestation: {
             type: "CreditScoreAttestation",
-            score: 700,
-            scoreType: "Credit Score",
-            provider: "Experian"
+            score: 70,
+            scoreType: "Reputation Score",
+            provider: "FilRep"
           }
         }
       ],
@@ -328,9 +328,9 @@ describe("buildAndSignFulfillment", () => {
             id: subjectDid.subject,
             CreditScoreAttestation: {
               type: "CreditScoreAttestation",
-              score: 700,
-              scoreType: "Credit Score",
-              provider: "Experian"
+              score: 70,
+              scoreType: "Reputation Score",
+              provider: "FilRep"
             }
           },
           issuer: {

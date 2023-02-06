@@ -34,7 +34,7 @@ async function main() {
     const data = Object.assign(
       {},
       {
-        creditScore: 750,
+        creditScore: 75,
         address: wallet.address,
         privateKey: wallet.privateKey
       },

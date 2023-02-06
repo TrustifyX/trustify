@@ -47,7 +47,7 @@ export async function createVerificationOffer(
       [process.env.ISSUER_DID]
     )
   } else if (type === "credit-score") {
-    // If the verification request requires a credit score, set the
+    // If the verification request requires a reputation score, set the
     // minimum acceptable score.
     verificationRequest = buildCreditScoreVerificationOffer(
       id,

@@ -5,7 +5,7 @@ import { isActive, classNames } from "../../../lib/react-fns"
 
 const tabs = [
   { name: "KYC/AML", href: "/demos/verifier/kyc" },
-  { name: "Credit Score", href: "/demos/verifier/credit-score" }
+  { name: "Reputation Score", href: "/demos/verifier/credit-score" }
 ]
 
 const AttestationNavigation: FC = () => {

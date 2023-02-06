@@ -98,7 +98,7 @@ describe("Submission validator", () => {
     ).resolves.not.toThrow()
   })
 
-  it("validates a Credit Score Verification Submission", async () => {
+  it("validates a Reputation Score Verification Submission", async () => {
     const clientDidKey = randomDidKey(randomBytes)
     const verifierDidKey = randomDidKey(randomBytes)
     const { manifest, issuer } = await generateManifestAndIssuer("creditScore")
@@ -283,7 +283,7 @@ describe("Submission validator", () => {
     )
   })
 
-  it("rejects if the credit score is too low", async () => {
+  it("rejects if the reputation score is too low", async () => {
     const clientDidKey = randomDidKey(randomBytes)
     const verifierDidKey = randomDidKey(randomBytes)
     const { manifest, issuer } = await generateManifestAndIssuer("creditScore")
@@ -332,7 +332,7 @@ describe("Submission validator", () => {
     )
   })
 
-  it("rejects if the submission includes a KYC credential when a Credit Score is required", async () => {
+  it("rejects if the submission includes a KYC credential when a Reputation Score is required", async () => {
     const clientDidKey = randomDidKey(randomBytes)
     const verifierDidKey = randomDidKey(randomBytes)
     const { manifest, issuer } = await generateManifestAndIssuer("kyc")
@@ -361,7 +361,7 @@ describe("Submission validator", () => {
     const fulfillmentVP = await decodeVerifiablePresentation(fulfillment)
     const clientVC = fulfillmentVP.verifiableCredential![0]
 
-    // Generate Credit Score Request, even though we have a KYC credential
+    // Generate Reputation Score Request, even though we have a KYC credential
     const verificationRequest = buildCreditScoreVerificationOffer(
       uuidv4(),
       verifierDidKey.subject,

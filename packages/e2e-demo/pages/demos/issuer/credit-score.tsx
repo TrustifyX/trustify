@@ -92,27 +92,27 @@ const CreditScorePage: NextPage<Props> = ({
       </div>
     ) : (
       <>
-        <h2 className="text-gray-200">Credit Score Verifiable Credential Issue User Experience</h2>
+        <h2 className="text-gray-200">Reputation Score Verifiable Credential Issue User Experience</h2>
         <p className="text-gray-200">
           Credentials contain data specific to their schema types. Compared to a
-          KYC/AML credential, a credential that attests to a credit score has
+          KYC/AML credential, a credential that attests to a reputation score has
           additional data to contain a numeric score, and the credential expires
           relatively quickly.
         </p>
         <p className="text-gray-200">
           The currently signed-in user for this demonstration has the following
-          credit score:
+          reputation score:
         </p>
         <dl className="flex flex-row justify-center mx-auto space-x-2 sm:space-x-5">
           <div className="px-4 py-3 overflow-hidden text-center bg-amber-300 rounded-lg shadow sm:py-2 sm:px-4 flex-0 text-gray-200">
             <dt className="mt-1 text-3xl font-semibold text-gray-900">
               {user.creditScore}
             </dt>
-            <dd className="text-gray-900">Experian</dd>
+            <dd className="text-gray-900">FilRep</dd>
           </div>
         </dl>
         <p className="text-gray-200">
-          Request a VC for this credit score by scanning this QR code with the
+          Request a VC for this reputation score by scanning this QR code with the
           Trustify mobile app:
         </p>
         <QRCodeSVG
@@ -120,7 +120,7 @@ const CreditScorePage: NextPage<Props> = ({
           className="w-48 h-48 mx-auto text-gray-200"
         />
         <p className="text-gray-200">
-          <strong className="text-gray-200">NOTE: </strong> In this demo, the credit score credential{" "}
+          <strong className="text-gray-200">NOTE: </strong> In this demo, the reputation score credential{" "}
           <strong className="text-gray-200">will expire after 1 minute</strong>.
         </p>
 

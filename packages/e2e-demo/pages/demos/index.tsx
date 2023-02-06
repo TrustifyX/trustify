@@ -9,7 +9,7 @@ const DEMOS = [
     title: "Basic Issuance",
     href: "/demos/issuer",
     description:
-      "An end-user requests KYC or Credit Score credentials from an issuer."
+      "An end-user requests KYC or Reputation Score credentials from an issuer."
   },
   {
     title: "Basic Verification",

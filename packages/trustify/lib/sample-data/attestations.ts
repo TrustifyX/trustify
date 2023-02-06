@@ -31,8 +31,8 @@ export function getSampleCreditScoreAttestation(
   return {
     type: CREDIT_SCORE_ATTESTATION,
     score: score,
-    scoreType: "Credit Score",
-    provider: "Experian"
+    scoreType: "Reputation Score",
+    provider: "FilRep"
   }
 }
 

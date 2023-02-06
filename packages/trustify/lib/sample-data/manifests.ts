@@ -113,18 +113,18 @@ export function buildCreditScoreManifest(
   const outputDescriptor = new OutputDescriptorBuilder()
     .id(`${CREDIT_SCORE_CREDENTIAL_TYPE_NAME}`)
     .schema(attestationInfo.schema)
-    .name(`Proof of Credit Score from ${issuer.name}`)
+    .name(`Proof of Reputation Score from ${issuer.name}`)
     .description(
-      `Attestation that ${issuer.name} has performed a Credit Score check for this subject`
+      `Attestation that ${issuer.name} has performed a Reputation Score check for this subject`
     )
     .styles(styles)
     .withDisplay(`${issuer.name} Risk Score`, (d) => {
       d.subtitle({
         path: [`$.${CREDIT_SCORE_ATTESTATION}.scoreType`],
-        fallback: "Includes credit score"
+        fallback: "Includes reputation score"
       })
         .description(
-          "The Credit Score authority processes credit worthiness analysis, potentially employing a number of internal and external vendor providers."
+          "The Reputation Score authority processes credit worthiness analysis, potentially employing a number of internal and external vendor providers."
         )
         .addNumberProperty("Score", (p) =>
           p.path([`$.${CREDIT_SCORE_ATTESTATION}.score`])

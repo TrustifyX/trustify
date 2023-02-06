@@ -48,7 +48,7 @@ describe("POST /issuance/[token]", () => {
     )
   })
 
-  it("returns a Credit Score credential", async () => {
+  it("returns a Reputation Score credential", async () => {
     const user = await userFactory()
     const token = await temporaryAuthToken(user)
     const clientDid = await randomDidKey(randomBytes)

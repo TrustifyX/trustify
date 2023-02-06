@@ -16,8 +16,8 @@ const items = [
     icon: UsersIcon
   },
   {
-    name: "Credit Score",
-    description: "Proof of your current credit score",
+    name: "Reputation Score",
+    description: "Proof of your current reputation score",
     href: "/demos/issuer/credit-score",
     iconColor: "bg-purple-500",
     icon: CalculatorIcon

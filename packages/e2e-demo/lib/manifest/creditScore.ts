@@ -14,7 +14,7 @@ export const creditScoreManifest: CredentialManifest = buildCreditScoreManifest(
     },
     hero: {
       uri: fullURL("/img/credit-score-hero.png"),
-      alt: "Credit Score Visual"
+      alt: "Reputation Score Visual"
     },
     background: {
       color: "#8B5CF6"

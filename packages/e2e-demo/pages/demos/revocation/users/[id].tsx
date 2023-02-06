@@ -157,7 +157,7 @@ const AdminUserPage: NextPage<Props> = ({ credentialList, user }) => {
           previously issued credentials can still be used.
         </p>
         <p className="text-gray-200">
-          In this demo, KYC/AML credentials can be revoked, but Credit Score
+          In this demo, KYC/AML credentials can be revoked, but Reputation Score
           cannot &mdash; it simply expires relatively quickly, as a snapshot in
           time. Not all credentials must be revocable.
         </p>

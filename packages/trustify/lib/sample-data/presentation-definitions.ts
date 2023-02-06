@@ -75,7 +75,7 @@ export const withDefaults =
   }
 
 /**
- * Build a Presentation Definition requesting a Credit Score Attestation
+ * Build a Presentation Definition requesting a Reputation Score Attestation
  */
 export function creditScorePresentationDefinition(
   trustedAuthorities: string[] = [],
@@ -94,8 +94,8 @@ export function creditScorePresentationDefinition(
 
   const inputDescriptor = new InputDescriptorBuilder()
     .id(CREDIT_SCORE_CREDENTIAL_TYPE_NAME)
-    .name("Proof of Credit Score")
-    .purpose("Please provide a valid credential from a Credit Score issuer")
+    .name("Proof of Reputation Score")
+    .purpose("Please provide a valid credential from a Reputation Score issuer")
     .constraints(constraintsBuilder.build())
     .withConstraints(withDefaults(attestationInfo.schema, trustedAuthorities))
     .build()

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tests Credit Score Manifest tests for breaking Credit Score Manifest schema changes 1`] = `
+exports[`Tests Reputation Score Manifest tests for breaking Reputation Score Manifest schema changes 1`] = `
 Object {
   "format": Object {
     "jwt_vc": Object {
@@ -22,10 +22,10 @@ Object {
   },
   "output_descriptors": Array [
     Object {
-      "description": "Attestation that Trustify has performed a Credit Score check for this subject",
+      "description": "Attestation that Trustify has performed a Reputation Score check for this subject",
       "display": Object {
         "description": Object {
-          "text": "The Credit Score authority processes credit worthiness analysis, potentially employing a number of internal and external vendor providers.",
+          "text": "The Reputation Score authority processes credit worthiness analysis, potentially employing a number of internal and external vendor providers.",
         },
         "properties": Array [
           Object {
@@ -57,7 +57,7 @@ Object {
           },
         ],
         "subtitle": Object {
-          "fallback": "Includes credit score",
+          "fallback": "Includes reputation score",
           "path": Array [
             "$.CreditScoreAttestation.scoreType",
           ],
@@ -67,14 +67,14 @@ Object {
         },
       },
       "id": "CreditScoreCredential",
-      "name": "Proof of Credit Score from Trustify",
+      "name": "Proof of Reputation Score from Trustify",
       "schema": "https://trustify.id/definitions/schemas/0.0.1/CreditScoreAttestation",
       "styles": Object {
         "background": Object {
           "color": "#8B5CF6",
         },
         "hero": Object {
-          "alt": "Credit Score Visual",
+          "alt": "Reputation Score Visual",
           "uri": "http://test.host/img/credit-score-hero.png",
         },
         "text": Object {

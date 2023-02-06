@@ -66,7 +66,7 @@ export default apiHandler<EncodedCredentialFulfillment>(async (req, res) => {
   // a revocable credential for KYC/AML credentials.
   const revocationList = await handleRevocationIfNecessary(user, manifest)
 
-  // If this is a Credit Score attestation, set the expiration to be
+  // If this is a Reputation Score attestation, set the expiration to be
   // one minute for the sake of a demo
   const expirationDate =
     manifest.id === CREDIT_SCORE_MANIFEST_ID
