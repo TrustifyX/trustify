@@ -130,7 +130,7 @@ const AdminCredentialPage: NextPage<Props> = ({
 
         <Disclosure>
           <Disclosure.Button>
-            <p className="font-semibold underline text-md">
+            <p className="font-semibold text-gray-200 underline text-md">
               Show/Hide the Verifiable Credential
             </p>
           </Disclosure.Button>

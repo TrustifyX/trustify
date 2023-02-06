@@ -391,7 +391,7 @@ const Dapp: FC = () => {
   return (
     <DappLayout balance={balance} symbol={tokenData.symbol}>
       <div className="prose max-w-none">
-        <p className="font-bold">
+        <p className="font-bold text-gray-200">
           In this demo, transfers of 10 or more THUSDC will require proof of
           KYC.
         </p>

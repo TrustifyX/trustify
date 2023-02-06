@@ -245,7 +245,7 @@ task(
     const domain = {
       name: "VerificationRegistry",
       version: "1.0",
-      chainId: 1337,
+      chainId: hre.network.config.chainId ?? 1337,
       verifyingContract: registry.address,
     };
 
@@ -294,11 +294,6 @@ export default {
   networks: {
     hardhat: {
       chainId: 1337,
-    },
-    hyperspace: {
-      chainId: 3141,
-      url: "https://api.hyperspace.node.glif.io/rpc/v1",
-      accounts: [process.env.PRIVATE_KEY],
-  },
+    }
   },
 };

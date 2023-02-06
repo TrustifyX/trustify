@@ -104,7 +104,7 @@ function CredentialTable({
         {credentials.map((credential, index) => (
           <tr
             key={index}
-            className={index % 2 === 0 ? "bg-gray-300" : "bg-gray-50"}
+            className={index % 2 === 0 ? "bg-gray-800 text-gray-200" : "bg-gray-900 text-gray-200"}
           >
             <td>{credential.credential.credential.type[1]}</td>
             <td>
@@ -113,11 +113,12 @@ function CredentialTable({
                 credential.credential.createdAt}
             </td>
             <td>
-              <Link
+              <a
                 href={`/demos/revocation/credentials/${credential?.credential?.credential?.proof?.jwt}`}
+                className="bg-gray-800 text-cyan-400"
               >
                 Details
-              </Link>
+              </a>
             </td>
           </tr>
         ))}

@@ -24,7 +24,7 @@ const TransferStatus: FC<TransferStatusProps> = ({
       </h3>
       {verification ? (
         <>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-200">
             Scan this QR code with the Trustify app to provide your KYC Verifiable
             Credential:
           </label>
@@ -40,7 +40,7 @@ const TransferStatus: FC<TransferStatusProps> = ({
           </h4>
         </div>
       )}
-      <label className="block text-sm font-medium text-gray-700">
+      <label className="block text-sm font-medium text-gray-200">
         Alternatively, you can simulate verification:
       </label>
       <LoadingButton

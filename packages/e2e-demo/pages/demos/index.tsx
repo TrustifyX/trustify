@@ -33,6 +33,12 @@ const DEMOS = [
     href: "/demos/demo6",
     description:
       "An example of how a lending market Dapp can require KYC verification before depositing assets."
+  },
+  {
+    title: "Filecoin Plus Verification",
+    href: "/demos/demo6",
+    description:
+      "Work in progress for verification of clients and deals"
   }
 ]
 

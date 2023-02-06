@@ -16,35 +16,35 @@ const MarketList: FC<Props> = ({ assets, setSelected }) => {
           <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
             <div className="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
               <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
+                <thead className="bg-amber-300">
                   <tr>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-200 uppercase"
+                      className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-900 uppercase"
                     >
                       Assets
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-200 uppercase"
+                      className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-900 uppercase"
                     >
                       Market size
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-200 uppercase"
+                      className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-900 uppercase"
                     >
                       Total borrowed
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-200 uppercase"
+                      className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-900 uppercase"
                     >
                       Deposit APY
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-200 uppercase"
+                      className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-900 uppercase"
                     >
                       Borrow APY
                     </th>
@@ -53,7 +53,7 @@ const MarketList: FC<Props> = ({ assets, setSelected }) => {
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-gray-300 divide-y divide-gray-200">
+                <tbody className="bg-gray-900 divide-y divide-gray-200">
                   {assets.map((asset) => (
                     <tr key={asset.name}>
                       <td className="px-6 py-4 whitespace-nowrap">
@@ -91,8 +91,8 @@ const MarketList: FC<Props> = ({ assets, setSelected }) => {
                       <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                         <a
                           href="#"
-                          className={`text-indigo-600 hover:text-indigo-900 ${
-                            asset.tokenAddress ? "" : "opacity-25"
+                          className={`text-amber-400 hover:text-amber-500 ${
+                            asset.tokenAddress ? "" : ""
                           }`}
                           onClick={() => {
                             if (asset.tokenAddress) {
@@ -105,7 +105,7 @@ const MarketList: FC<Props> = ({ assets, setSelected }) => {
                         &nbsp;
                         <a
                           href="#"
-                          className="text-indigo-600 opacity-25 hover:text-indigo-900"
+                          className="text-amber-400 opacity-40 hover:text-amber-500"
                         >
                           Borrow
                         </a>

@@ -33,7 +33,7 @@ const Transfer: FC<TransferProps> = ({
 
   return (
     <form
-      className="max-w-md mx-auto rounded-lg shadow-md"
+      className="max-w-md mx-auto rounded-lg shadow-md bg-gray-700 text-gray-900"
       onSubmit={(event) => {
         // This function just calls the transferTokens callback with the
         // form's data.
@@ -49,7 +49,7 @@ const Transfer: FC<TransferProps> = ({
           Transfer
         </h3>
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-200">
             Amount of {tokenSymbol}
           </label>
           <input
@@ -63,7 +63,7 @@ const Transfer: FC<TransferProps> = ({
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-200">
             Recipient address
           </label>
           <input
@@ -85,7 +85,7 @@ const Transfer: FC<TransferProps> = ({
           />
         )}
       </div>
-      <div className="px-4 py-3 text-right bg-gray-50 sm:px-6">
+      <div className="px-4 py-3 text-right rounded-lg bg-gray-700 sm:px-6">
         <LoadingButton
           loading={isLoading}
           type="submit"

@@ -17,17 +17,17 @@ const Verification: FC<Props> = ({ onDone }) => {
         <ul>
           <li>
             <Link href="/demos/issuer/kyc">
-              <a>Circle</a>
+              <a className="text-cyan-400">Circle</a>
             </Link>
           </li>
           <li>
             <Link href="/demos/issuer/kyc">
-              <a>Coinbase</a>
+              <a className="text-cyan-400">Coinbase</a>
             </Link>
           </li>
         </ul>
-        Already have a credential?{" "}
-        <a href="#" onClick={onDone}>
+        <p className="text-gray-200"> Already have a credential?{" "} </p>
+        <a href="#" className="text-cyan-400" onClick={onDone}>
           Click here
         </a>
       </div>
