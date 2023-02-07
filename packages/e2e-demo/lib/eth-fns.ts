@@ -24,6 +24,7 @@ export const supportedChainIds = [
 // 5, // Goerli
 // 42, // Kovan
 // 1337 // Hardhat
+// 3141 // Hyperspace
 
 /**
  * The connector for the ethereum interface.
@@ -124,6 +125,13 @@ export function getProvider(): Provider {
   if (chainId === 5) {
     return new ethers.providers.JsonRpcProvider(
       "https://rpc.ankr.com/eth_goerli"
+    )
+  }
+
+  // Hyperspace
+  if (chainId === 3141) {
+    return new ethers.providers.JsonRpcProvider(
+      "https://api.hyperspace.node.glif.io/rpc/v1"
     )
   }
 

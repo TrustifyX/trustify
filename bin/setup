@@ -1,5 +1,11 @@
 #!/usr/bin/env sh
 
+# echo "node version"
+# nvm use v16
+
+# echo "npm version"
+# npm i -g npm@7
+
 echo "Installing dependencies..."
 npm install
 

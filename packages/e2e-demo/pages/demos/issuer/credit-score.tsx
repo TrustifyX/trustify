@@ -64,7 +64,7 @@ const CreditScorePage: NextPage<Props> = ({
         <p className="text-gray-200">
           The issuer created a credential for a{" "}
           <Link href="https://www.w3.org/TR/did-core/">
-            <a target="_blank">DID</a>
+            <a className="text-gray-200" target="_blank">DID</a>
           </Link>{" "}
           owned by{" "}
           <b>
